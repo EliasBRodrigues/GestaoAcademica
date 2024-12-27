@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 
-import Icon from 'react-native-vector-icons/FontAwesome'; // Corrigido para a importação correta
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Link } from 'expo-router';
 
 export default function Login() {
