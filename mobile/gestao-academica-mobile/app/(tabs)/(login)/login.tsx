@@ -1,18 +1,12 @@
-import {
-  Alert,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
+import _home from '../(student)/_home';
 
 export default function Login() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,6 +18,7 @@ export default function Login() {
 
     if (email === 'user' && password === '123') {
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
+      router.push("/(tabs)/(student)/_home")
     } else {
       Alert.alert('Erro', 'E-mail ou senha inválidos.');
     }
@@ -31,33 +26,33 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.logo}/>
-      
+      <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.logo} />
+
       <View style={styles.inputContainer}>
-        <Icon name="user" size={28} color="#aaa" style={styles.icon}/>
+        <Icon name="user" size={28} color="#aaa" style={styles.icon} />
         <TextInput
-        style={styles.input}
-        placeholder="E-mail"
-        placeholderTextColor="#aaa"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
+          style={styles.input}
+          placeholder="E-mail"
+          placeholderTextColor="#aaa"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
       </View>
-      
+
       <View style={styles.inputContainer}>
-        <Icon name="lock" size={30} color="#aaa" style={styles.icon}/>
+        <Icon name="lock" size={30} color="#aaa" style={styles.icon} />
         <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        placeholderTextColor="#aaa"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+          style={styles.input}
+          placeholder="Senha"
+          placeholderTextColor="#aaa"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
       </View>
-      <Link href={"/"} style={styles.forgotPassword}>Esqueceu a senha?</Link>
+      <Link href={"/_forgot"} style={styles.forgotPassword}>Esqueceu a senha?</Link>
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
@@ -83,9 +78,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginBottom: 15,
     backgroundColor: '#E1E4EA',
-    paddingLeft: 20, 
+    paddingLeft: 20,
     paddingRight: 15,
-    bottom: 10 
+    bottom: 10,
+    borderColor: '#E1E4EA'
   },
   icon: {
     marginRight: 20,
@@ -97,6 +93,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderRadius: 100,
     fontSize: 16,
+    borderColor: '#E1E4EA'
+
   },
   button: {
     width: '90%',
