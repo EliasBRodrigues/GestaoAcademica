@@ -1,72 +1,126 @@
-import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
+import React, { useState } from 'react';
 
-import { Link } from "expo-router";
-import { useState } from "react";
+import Icon from 'react-native-vector-icons/FontAwesome'; // Corrigido para a importação correta
+import { Link } from 'expo-router';
 
 export default function Login() {
-  const [text, setText] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    if (email === '' || password === '') {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+
+    // Simula a autenticação
+    if (email === 'usuario@teste.com' && password === '123456') {
+      Alert.alert('Sucesso', 'Login realizado com sucesso!');
+    } else {
+      Alert.alert('Erro', 'E-mail ou senha inválidos.');
+    }
+  };
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.svg} />
-        <View style={styles.form}>
-          <TextInput value={text} onChangeText={setText} style={styles.input} />
-          <TextInput value={text} onChangeText={setText} style={styles.input} />
-          <Link href={"/"} style={styles.link}>Esqueceu a senha?</Link>
-          <View style={styles.button}>
-            <Button
-              title="Login"
-              color="#709BEF"
-              accessibilityLabel="Learn more about this purple button"
-            />
-          </View>
-        </View>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <View style={styles.container}>
+      <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.logo}/>
+      
+      <View style={styles.inputContainer}>
+        <Icon name="user" size={28} color="#aaa" style={styles.icon}/>
+        <TextInput
+        style={styles.input}
+        placeholder="E-mail"
+        placeholderTextColor="#aaa"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      </View>
+      
+      <View style={styles.inputContainer}>
+        <Icon name="lock" size={30} color="#aaa" style={styles.icon}/>
+        <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        placeholderTextColor="#aaa"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      </View>
+      <Link href={"/"} style={styles.forgotPassword}>Esqueceu a senha?</Link>
 
-  )
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: 1,
     justifyContent: 'center',
-    alignContent: 'center',
-    paddingHorizontal: 20
-  },
-  link: {
-    top: 100,
-    flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+    padding: 20,
   },
-  button: {
-    top: 100,
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  svg: {
-    width: 272,
-    height: 184,
-    top: 120,
-    left: 38,
-  },
-  form: {
-    gap: 5,
-    padding: 15
-  },
-  titleContainer: {
+  inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: '90%',
+    height: 50,
+    borderRadius: 100,
+    marginBottom: 15,
+    backgroundColor: '#E1E4EA',
+    paddingLeft: 20, 
+    paddingRight: 15, 
+  },
+  icon: {
+    marginRight: 20,
+    color: '#709BEF'
   },
   input: {
-    height: 57,
-    width: 312,
-    marginBottom: 15,
-    padding: 10,
-    top: 120,
-    borderRadius: 35,
-    backgroundColor: '#E1E4EA'
+    flex: 1,
+    height: 50,
+    backgroundColor: 'transparent',
+    borderRadius: 100,
+    fontSize: 16,
+  },
+  button: {
+    width: '90%',
+    height: 55,
+    backgroundColor: '#709BEF',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  logo: {
+    width: '70%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  forgotPassword: {
+    color: '#709BEF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 30,
   },
 });
