@@ -22,8 +22,7 @@ export default function Login() {
       return;
     }
 
-    // Simula a autenticação
-    if (email === 'usuario@teste.com' && password === '123456') {
+    if (email === 'user' && password === '123') {
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
     } else {
       Alert.alert('Erro', 'E-mail ou senha inválidos.');
@@ -73,7 +72,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    padding: 20,
+    padding: 15,
+    bottom: 25
   },
   inputContainer: {
     flexDirection: 'row',
@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: '#E1E4EA',
     paddingLeft: 20, 
-    paddingRight: 15, 
+    paddingRight: 15,
+    bottom: 10 
   },
   icon: {
     marginRight: 20,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    bottom: 10,
   },
   logo: {
     width: '70%',
