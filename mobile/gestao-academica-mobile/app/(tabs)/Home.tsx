@@ -5,6 +5,7 @@ import { Link } from 'expo-router';
 export default function Home() {
   return (
     <View style={styles.titleContainer}>
+        
       <Link href="/(tabs)/(login)/login">Login</Link>
     </View>
   );
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    top: 100
   },
   stepContainer: {
     gap: 8,

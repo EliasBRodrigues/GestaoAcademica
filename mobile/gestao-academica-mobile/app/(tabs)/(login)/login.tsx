@@ -16,7 +16,7 @@ export default function Login() {
       return;
     }
 
-    if (email === 'user' && password === '123') {
+    if (email === 'u' && password === '1') {
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
       router.push("/(tabs)/(student)/_home")
     } else {
