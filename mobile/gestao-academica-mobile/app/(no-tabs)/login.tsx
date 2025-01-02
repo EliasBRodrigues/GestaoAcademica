@@ -43,7 +43,7 @@ export default function Login() {
           secureTextEntry
         />
       </View>
-      <Link href={"/_forgot"} style={styles.forgotPassword}>Esqueceu a senha?</Link>
+      {/* <Link href={"/_forgot"} style={styles.forgotPassword}>Esqueceu a senha?</Link> */}
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    padding: 15,
+    padding: 30,
+    bottom: 20
   },
   inputContainer: {
     flexDirection: 'row',
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E1E4EA',
     paddingLeft: 20,
     paddingRight: 15,
-    bottom: 10,
+    bottom: 20,
     borderColor: '#E1E4EA'
   },
   icon: {
@@ -80,15 +81,14 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 50,
-    backgroundColor: 'transparent',
+    backgroundColor: '#E1E4EA',
     borderRadius: 100,
     fontSize: 16,
     borderColor: '#E1E4EA'
-
   },
   button: {
     width: '90%',
-    height: 55,
+    height: 57,
     backgroundColor: '#709BEF',
     borderRadius: 100,
     justifyContent: 'center',
