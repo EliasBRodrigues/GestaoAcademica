@@ -1,13 +1,12 @@
 import React from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useNavigation, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 export default function _home() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      {/* Componente de Menu Hambúrguer */}
       <View style={styles.firstContainer}>
         <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
         <Image source={require('../../../assets/images/fotoPerfilprofile.png')} style={styles.logo} />
@@ -15,9 +14,7 @@ export default function _home() {
         <Text style={styles.text}>fulano@facul.sp.gov.br</Text>
         <Text style={styles.text}>RA: 1234</Text>
       </View>
-
       <View style={styles.secondContainer}>
-        {/* Primeira linha de botões */}
         <View style={styles.row}>
           <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_registration')}>
             <Icon name="id-card" size={55} color="#aaa" style={styles.icon} />
@@ -28,8 +25,6 @@ export default function _home() {
             <Text style={styles.buttonText}>Horários</Text>
           </TouchableOpacity>
         </View>
-
-        {/* Segunda linha de botões */}
         <View style={styles.row}>
           <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_notes')}>
             <Icon name="graduation-cap" size={55} color="#aaa" style={styles.icon} />
@@ -94,9 +89,9 @@ const styles = StyleSheet.create({
   },
   row: {
     bottom: 30,
-    flexDirection: 'row', // Para exibir os botões lado a lado
-    justifyContent: 'space-between', // Espalha as caixas igualmente
-    marginBottom: 20, // Espaçamento entre as linhas
-    width: '80%', // Defina a largura das linhas para que fiquem dentro da tela
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    width: '80%',
   },
 });
