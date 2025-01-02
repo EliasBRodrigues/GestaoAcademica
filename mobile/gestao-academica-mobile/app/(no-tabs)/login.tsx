@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Link, useRouter } from 'expo-router';
-import _home from '../(student)/_home';
+import _home from '../(tabs)/(student)/_home';
 
 export default function Login() {
   const router = useRouter();
@@ -11,22 +11,13 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (email === '' || password === '') {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-      return;
-    }
-
-    if (email === 'u' && password === '1') {
-      Alert.alert('Sucesso', 'Login realizado com sucesso!');
+      //Alert.alert('Sucesso', 'Login realizado com sucesso!');
       router.push("/(tabs)/(student)/_home")
-    } else {
-      Alert.alert('Erro', 'E-mail ou senha inválidos.');
-    }
   };
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.logo} />
+      <Image source={require('../../assets/images/LogoAzullogo.png')} style={styles.logo} />
 
       <View style={styles.inputContainer}>
         <Icon name="user" size={28} color="#aaa" style={styles.icon} />
@@ -68,7 +59,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
     padding: 15,
-    bottom: 25
   },
   inputContainer: {
     flexDirection: 'row',

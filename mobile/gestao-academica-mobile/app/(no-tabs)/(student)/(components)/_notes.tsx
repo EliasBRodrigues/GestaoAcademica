@@ -2,52 +2,35 @@ import React from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation, useRouter } from 'expo-router';
+import LinkButton from '@/components/ExternalLink';
 
-export default function _home() {
+export default function Notes() {
   const router = useRouter();
   return (
     <View style={styles.container}>
       {/* Componente de Menu Hambúrguer */}
+      <View style={styles.link}>
+        <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
+      </View>
       <View style={styles.firstContainer}>
         <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-        <Image source={require('../../../assets/images/fotoPerfilprofile.png')} style={styles.logo} />
-        <Text style={styles.text}>Fulano Ciclano Beltrano</Text>
-        <Text style={styles.text}>fulano@facul.sp.gov.br</Text>
-        <Text style={styles.text}>RA: 1234</Text>
+        <Text style={styles.text}>Boletim</Text>
       </View>
 
       <View style={styles.secondContainer}>
         {/* Primeira linha de botões */}
-        <View style={styles.row}>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_registration')}>
-            <Icon name="id-card" size={55} color="#aaa" style={styles.icon} />
-            <Text style={styles.buttonText}>Matrícula</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_time')}>
-            <Icon name="clock" size={55} color="#aaa" style={styles.icon} />
-            <Text style={styles.buttonText}>Horários</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Segunda linha de botões */}
-        <View style={styles.row}>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_notes')}>
-            <Icon name="graduation-cap" size={55} color="#aaa" style={styles.icon} />
-            <Text style={styles.buttonText}>Boletim</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_frequency')}>
-            <Icon name="check-square" size={55} color="#aaa" style={styles.icon} />
-            <Text style={styles.buttonText}>Frequência</Text>
-          </TouchableOpacity>
-        </View>
+        
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  link: {
+    position: 'relative', top: 10,  left: 10, padding: 20,
+  },
   container: {
-    flex: 1,
+    flex: 0.5,
     backgroundColor: '#709BEF',
   },
   firstContainer: { // BLUE
@@ -67,13 +50,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
   },
   logo: {
-    bottom: 10,
+    top: 1,
   },
   text: {
     fontSize: 18,
     color: '#FFF',
     fontWeight: '600',
-    top: 5
+    bottom: 15
   },
   button: {
     width: 135,

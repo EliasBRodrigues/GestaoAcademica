@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Login from './login';
 
-import { Link } from 'expo-router';
 
 export default function Home() {
   return (
     <View style={styles.titleContainer}>
-        
-      <Link href="/(tabs)/(login)/login">Login</Link>
+      <Login />
     </View>
   );
 }

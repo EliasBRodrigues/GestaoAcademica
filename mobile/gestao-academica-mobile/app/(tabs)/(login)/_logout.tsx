@@ -9,7 +9,7 @@ export default function _logout() {
     const handleLogin = () => {
         Alert.alert("Você saiu do sistema! Obrigado(a).")
         setModalVisible(false)
-        router.push("/(tabs)/(login)/login")
+        router.push("/(no-tabs)/login")
     }
 
     const handleHome = () => {
@@ -49,7 +49,7 @@ export default function _logout() {
                 </View>
             </Modal>
             <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
-                <Text>open modal</Text>
+                <Text style={styles.textStyle}>Clique aqui para sair do SIGA</Text>
             </TouchableOpacity>
 
         </View>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#ffffff',
         padding: 15,
-        bottom: 25
+        bottom: 2
     },
     button: {
         width: "90%",

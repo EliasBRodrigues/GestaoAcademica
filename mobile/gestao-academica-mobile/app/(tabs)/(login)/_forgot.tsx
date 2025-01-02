@@ -40,7 +40,7 @@ export default function _forgot() {
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Enviar</Text>
             </TouchableOpacity>
-            <Link href={"/login"} style={styles.forgotPassword}>Voltar</Link>
+            <Link href={"/(tabs)/(student)/_home"} style={styles.forgotPassword}>Voltar</Link>
         </View>
     );
 }
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     titleContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        bottom: 20,
+        bottom: 100,
         color: 'red'
     },
     container: {
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#ffffff',
         padding: 15,
-        bottom: 50
     },
     inputContainer: {
         flexDirection: 'row',
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E1E4EA',
         paddingLeft: 20,
         paddingRight: 15,
-        bottom: 1,
+        bottom: 50,
         borderColor: '#E1E4EA'
     },
     icon: {
@@ -93,13 +92,13 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         justifyContent: 'center',
         alignItems: 'center',
-        bottom: 0,
+        bottom: 50,
     },
     logo: {
         width: '70%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 30,
+        bottom: 100,
     },
     buttonText: {
         color: '#fff',
@@ -111,6 +110,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         bottom: 0,
-        top: 50
+        top: 10
     },
 });
