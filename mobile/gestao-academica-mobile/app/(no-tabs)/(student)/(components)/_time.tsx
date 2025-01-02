@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
   },
   row: {
     bottom: 30,
-    flexDirection: 'row', // Para exibir os botões lado a lado
-    justifyContent: 'space-between', // Espalha as caixas igualmente
-    marginBottom: 20, // Espaçamento entre as linhas
-    width: '80%', // Defina a largura das linhas para que fiquem dentro da tela
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginBottom: 20, 
+    width: '80%', 
   },
 });
