@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
     padding: 30,
-    bottom: 20
   },
   inputContainer: {
     flexDirection: 'row',
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#E1E4EA',
     paddingLeft: 20,
     paddingRight: 15,
-    bottom: 20,
     borderColor: '#E1E4EA'
   },
   icon: {
@@ -93,7 +91,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: 10,
+    marginTop: 20
   },
   logo: {
     width: '70%',
