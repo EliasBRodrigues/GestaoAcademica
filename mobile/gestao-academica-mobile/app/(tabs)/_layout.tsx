@@ -77,6 +77,17 @@ export default function Layout() {
         >
         </Drawer.Screen>
         <Drawer.Screen
+          name="(component)/_caution"
+          options={{
+            title: "Avisos",
+            drawerLabel: "Avisos",
+            drawerIcon: () => (
+              <Icon name="thumb-tack" size={28} color="#aaa" style={styles.icon} />
+            )
+          }}
+        >
+        </Drawer.Screen>
+        <Drawer.Screen
           name="(login)/_logout"
           options={{
             title: "Logout",
