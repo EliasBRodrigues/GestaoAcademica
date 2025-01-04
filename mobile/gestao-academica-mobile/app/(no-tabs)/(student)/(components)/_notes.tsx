@@ -22,7 +22,6 @@ const Notes: React.FC = () => {
         <View style={styles.secondContainer}>
           <View style={styles.tableRow}>
             <Text style={styles.mainText}>Internet das coisas</Text>
-            <Text style={styles.note}>8.5</Text>
           </View>
           <View style={styles.tableRow}>
             <Text style={styles.subText}>Atividade 1</Text>
