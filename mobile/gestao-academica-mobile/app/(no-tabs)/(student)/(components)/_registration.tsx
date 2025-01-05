@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinkButton from '@/components/ExternalLink';
+import { useRouter } from 'expo-router';
 
 export default function Registration() {
-  const handleLogin = () => {
+  const router = useRouter();
+  const handleRegistration = () => {
     //Alert.alert('Sucesso', 'Login realizado com sucesso!');
-    //router.push("/(tabs)/(student)/_home")
+    router.push("/(no-tabs)/(student)/(components)/(registration)/_grade_registration")
   };
   const [isButtonEnabled, setIsButtonEnabled] = useState(true);
   const checkButtonState = () => {
@@ -67,8 +69,11 @@ export default function Registration() {
             <Text style={styles.note}>6</Text>
           </View>
         </View>
-        <TouchableOpacity  style={[styles.button, !isButtonEnabled && styles.buttonDisabled]} onPress={isButtonEnabled ? handleLogin : undefined} disabled={!isButtonEnabled} >
+        {/* <TouchableOpacity  style={[styles.button, !isButtonEnabled && styles.buttonDisabled]} onPress={isButtonEnabled ? handleLogin : undefined} disabled={!isButtonEnabled} >
           <Text style={[styles.buttonText, !isButtonEnabled && styles.buttonTextDisabled]}>Matrícula</Text>
+        </TouchableOpacity> */}
+        <TouchableOpacity style={styles.button} onPress={handleRegistration} >
+          <Text style={styles.buttonText}>Matrícula</Text>
         </TouchableOpacity>
       </View>
     </View>
