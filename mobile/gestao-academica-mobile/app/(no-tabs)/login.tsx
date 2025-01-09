@@ -1,24 +1,31 @@
-import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import _home from '../(tabs)/(student)/_home';
+import Logo from '@/components/Logo';
+import LoadAnimation from '@/components/LoadAnimation';
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-      //Alert.alert('Sucesso', 'Login realizado com sucesso!');
-      router.push("/(tabs)/(student)/_home")
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      Alert.alert("Seja Bem Vindo(a)!");
+      router.push("/(tabs)/(student)/_home");
+    }, 2000);
   };
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/LogoAzullogo.png')} style={styles.logo} />
-
+      <LoadAnimation isLoading={isLoading} />
+      <Logo />
       <View style={styles.inputContainer}>
         <Icon name="user" size={28} color="#aaa" style={styles.icon} />
         <TextInput
@@ -31,7 +38,6 @@ export default function Login() {
           autoCapitalize="none"
         />
       </View>
-
       <View style={styles.inputContainer}>
         <Icon name="lock" size={30} color="#aaa" style={styles.icon} />
         <TextInput
@@ -43,8 +49,6 @@ export default function Login() {
           secureTextEntry
         />
       </View>
-      {/* <Link href={"/_forgot"} style={styles.forgotPassword}>Esqueceu a senha?</Link> */}
-
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
@@ -93,21 +97,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20
   },
-  logo: {
-    width: '70%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 30,
-  },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: '700',
-  },
-  forgotPassword: {
-    color: '#709BEF',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 30,
   },
 });
