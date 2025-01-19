@@ -1,11 +1,7 @@
 import React from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useNavigation, useRouter } from 'expo-router';
-import LinkButton from '@/components/ExternalLink';
 
 export default function Frequency() {
-  const router = useRouter();
   const getRandomInt = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
@@ -14,20 +10,9 @@ export default function Frequency() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.link}>
-        <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
-      </View>
-      {/* Componente de Menu Hambúrguer */}
-      <View style={styles.firstContainer}>
-        <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-        <Text style={styles.text}>Frequência</Text>
-      </View>
-
+      <View style={styles.firstContainer} />
       <View style={styles.secondContainer}>
-        {/* Primeira linha de botões */}
-        {/* Tabela com MATERIA, PRESENÇA e FALTAS */}
         <View style={styles.table}>
-          {/* Cabeçalho */}
           <View style={styles.tableRow}>
             <Text style={styles.headerText}>MATERIA</Text>
             <View style={styles.verticalLine}></View>
@@ -35,8 +20,6 @@ export default function Frequency() {
             <View style={styles.verticalLine}></View>
             <Text style={styles.headerText}>FALTAS</Text>
           </View>
-
-          {/* Linhas de dados */}
           {subjects.map((subject, index) => (
             <View key={index} style={styles.tableRow}>
               <Text style={styles.cellText}>{subject}</Text>

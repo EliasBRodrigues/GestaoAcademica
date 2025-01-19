@@ -23,7 +23,7 @@ export default function _forgot() {
 
     return (
         <View style={styles.container}>
-            <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.logo} />
+            {/* <Image source={require('../../../assets/images/LogoAzullogo.png')} style={styles.logo} /> */}
             <Text style={styles.titleContainer}>Digite um email válido para recuperar a senha</Text>
             <View style={styles.inputContainer}>
                 <Icon name="user" size={28} color="#aaa" style={styles.icon} />
@@ -40,7 +40,7 @@ export default function _forgot() {
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Enviar</Text>
             </TouchableOpacity>
-            <Link href={"/(tabs)/(student)/_home"} style={styles.forgotPassword}>Voltar</Link>
+            {/* <Link href={"/(tabs)/(student)/_home"} style={styles.forgotPassword}>Voltar</Link> */}
         </View>
     );
 }

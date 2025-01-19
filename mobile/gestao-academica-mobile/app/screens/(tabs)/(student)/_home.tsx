@@ -1,36 +1,38 @@
 import React from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useRouter } from 'expo-router';
+import { useNavigation } from 'expo-router';
+import { SCREEN } from '@/types/screen';
+import ImageProfile from '@/components/ImageProfile';
 
 export default function _home() {
-  const router = useRouter();
+  const nav = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.firstContainer}>
         <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-        <Image source={require('../../../assets/images/fotoPerfilprofile.png')} style={styles.logo} />
+        <ImageProfile />
         <Text style={styles.text}>Fulano Ciclano Beltrano</Text>
         <Text style={styles.text}>fulano@facul.sp.gov.br</Text>
         <Text style={styles.text}>RA: 1234</Text>
       </View>
       <View style={styles.secondContainer}>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_registration')}>
+          <TouchableOpacity style={styles.button} onPress={() => nav.navigate(SCREEN.REGISTRATION)}>
             <Icon name="id-card" size={55} color="#aaa" style={styles.icon} />
             <Text style={styles.buttonText}>Matrícula</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_time')}>
+          <TouchableOpacity style={styles.button} onPress={() => nav.navigate(SCREEN.TIME)}>
             <Icon name="clock" size={55} color="#aaa" style={styles.icon} />
             <Text style={styles.buttonText}>Horários</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_notes')}>
+          <TouchableOpacity style={styles.button} onPress={() => nav.navigate(SCREEN.NOTES)}>
             <Icon name="graduation-cap" size={55} color="#aaa" style={styles.icon} />
             <Text style={styles.buttonText}>Boletim</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => router.push('/(no-tabs)/(student)/(components)/_frequency')}>
+          <TouchableOpacity style={styles.button} onPress={() => nav.navigate(SCREEN.FREQUENCY)}>
             <Icon name="check-square" size={55} color="#aaa" style={styles.icon} />
             <Text style={styles.buttonText}>Frequência</Text>
           </TouchableOpacity>
@@ -60,9 +62,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-  },
-  logo: {
-    bottom: 10,
   },
   text: {
     fontSize: 18,

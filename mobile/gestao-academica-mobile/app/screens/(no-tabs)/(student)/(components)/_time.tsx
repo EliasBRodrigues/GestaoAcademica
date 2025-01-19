@@ -1,7 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, StatusBar, StyleSheet, Text , View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import LinkButton from '@/components/ExternalLink';
+import { ScrollView, StyleSheet, Text , View } from 'react-native';
 
 const subjects = [
   { sigla: "IAL", disciplina: "Internet das Coisas" },
@@ -15,13 +13,7 @@ const subjects = [
 export default function Horary() {
   return (
     <View style={styles.container}>
-      <View style={styles.link}>
-        <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
-      </View>
-      <View style={styles.firstContainer}>
-        <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-        <Text style={styles.text}>Horários</Text>
-      </View>
+      <View style={styles.link} />
       <View style={styles.scrollContainer}>
         <ScrollView contentContainerStyle={styles.scrollView}>
           <View style={styles.secondContainer}>

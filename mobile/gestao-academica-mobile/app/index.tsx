@@ -1,10 +1,7 @@
-import Home from '@/app/(no-tabs)/home';
-import { View } from 'react-native';
+import StackNavigation from './navigation';
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Home />
-    </View>
+      <StackNavigation />
   );
 }

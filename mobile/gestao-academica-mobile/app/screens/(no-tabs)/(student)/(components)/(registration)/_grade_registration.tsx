@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Alert, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinkButton from '@/components/ExternalLink';
-import { useRouter } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 import { Picker } from '@react-native-picker/picker';
+import { SCREEN } from '@/types/screen';
 
 type Semester = 'dsm1' | 'dsm2' | 'dsm3' | 'dsm4' | 'dsm5' | 'dsm6';
 type Subject = {
@@ -12,11 +13,10 @@ type Subject = {
 };
 
 export default function _grade_registration() {
-    const router = useRouter();
-
+    const nav = useNavigation();
     const handleRegistration = () => {
         Alert.alert('Concluído', 'Cadastro de semestre realizado com sucesso!');
-        router.push("/(tabs)/(student)/_home");
+        nav.navigate(SCREEN._HOME);
     };
 
     const [selected, setSelected] = useState<Semester | undefined>();
@@ -237,11 +237,11 @@ export default function _grade_registration() {
     return (
         <View style={styles.container}>
             <View style={styles.link}>
-                <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
+                {/* <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" /> */}
             </View>
             <View style={styles.firstContainer}>
-                <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-                <Text style={styles.text}>Matrícula</Text>
+                {/* <StatusBar barStyle="light-content" backgroundColor="#709BEF" /> */}
+                {/* <Text style={styles.text}>Matrícula</Text> */}
             </View>
             <View style={styles.secondContainer}>
                 <View style={styles.tableRow}>
@@ -333,7 +333,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#709BEF',
-        marginBottom: 30,
     },
     firstContainer: {
         flex: 0.1,
@@ -398,8 +397,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 30,
-        marginBottom: 20,
+        marginBottom: 35,
     },
     buttonText: {
         color: '#fff',

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import LinkButton from '@/components/ExternalLink';
-import { useRouter } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation, useRouter } from 'expo-router';
+import { SCREEN } from '@/types/screen';
 
 export default function Registration() {
-  const router = useRouter();
+  const nav = useNavigation();
   const handleRegistration = () => {
-    //Alert.alert('Sucesso', 'Login realizado com sucesso!');
-    router.push("/(no-tabs)/(student)/(components)/(registration)/_grade_registration")
+    // router.push("/(no-tabs)/(student)/(components)/(registration)/_grade_registration")
+    nav.navigate(SCREEN._GRADE_REGISTRATION);
   };
   const [isButtonEnabled, setIsButtonEnabled] = useState(true);
   const checkButtonState = () => {
@@ -21,13 +21,7 @@ export default function Registration() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.link}>
-        <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
-      </View>
-      <View style={styles.firstContainer}>
-        <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-        <Text style={styles.text}>Matrícula</Text>
-      </View>
+      <View style={styles.firstContainer} />
       <View style={styles.secondContainer}>
         <View style={styles.tableRow}>
           <Text style={styles.mainText}>Fulano de Ciclano Beltrano</Text>
@@ -81,12 +75,6 @@ export default function Registration() {
 }
 
 const styles = StyleSheet.create({
-  link: {
-    position: 'relative',
-    top: 10,
-    left: 10,
-    padding: 20,
-  },
   buttonDisabled: {
     backgroundColor: '#D3D3D3',
   },
@@ -105,26 +93,9 @@ const styles = StyleSheet.create({
   tableMargin: {
     marginTop: 20, 
   },
-  headerText: {
-    flex: 1,
-    textAlign: 'center',
-    fontWeight: '700',
-    color: 'black',
-  },
-  cellText: {
-    flex: 1,
-    textAlign: 'center',
-    color: 'black',
-  },
-  verticalLine: {
-    width: 1,
-    height: '100%',
-    backgroundColor: '#709BEF',
-  },
   container: {
     flex: 1,
     backgroundColor: '#709BEF',
-    marginBottom: 30,
   },
   firstContainer: {
     flex: 0.1,
@@ -141,12 +112,6 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-  },
-  text: {
-    fontSize: 18,
-    color: '#FFF',
-    fontWeight: '600',
-    bottom: 15,
   },
   mainText: {
     fontSize: 28,
@@ -198,21 +163,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center', 
   },
-  icon: {
-    color: '#fff',
-  },
   row: {
     bottom: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 20,
     width: '80%',
-  },
-  scrollContainer: {
-    flex: 1,
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
   },
 });

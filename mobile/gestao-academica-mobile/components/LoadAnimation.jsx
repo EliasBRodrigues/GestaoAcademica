@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 // Componente LoadAnimation
 const LoadAnimation = ({ isLoading }) => (
-    <SafeAreaView style={[styles.container, styles.horizontal]}>
+    <SafeAreaView style={styles.horizontal}>
         {isLoading ? (
             <ActivityIndicator size="large" color="#709BEF" />
         ) : (
@@ -14,10 +14,10 @@ const LoadAnimation = ({ isLoading }) => (
     </SafeAreaView>
 );
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-      },
+    // container: {
+    //     flex: 1,
+    //     justifyContent: 'center',
+    //   },
       horizontal: {
         flexDirection: 'row',
         justifyContent: 'space-around',

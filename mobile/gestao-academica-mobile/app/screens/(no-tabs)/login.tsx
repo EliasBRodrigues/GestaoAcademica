@@ -1,14 +1,13 @@
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useRouter } from 'expo-router';
-import _home from '../(tabs)/(student)/_home';
+import { useNavigation } from 'expo-router';
 import Logo from '@/components/Logo';
 import LoadAnimation from '@/components/LoadAnimation';
+import { SCREEN } from '@/types/screen';
 
 export default function Login() {
-  const router = useRouter();
+  const nav = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +17,7 @@ export default function Login() {
     setTimeout(() => {
       setIsLoading(false);
       Alert.alert("Seja Bem Vindo(a)!");
-      router.push("/(tabs)/(student)/_home");
+      nav.navigate(SCREEN._HOME);
     }, 2000);
   };
 

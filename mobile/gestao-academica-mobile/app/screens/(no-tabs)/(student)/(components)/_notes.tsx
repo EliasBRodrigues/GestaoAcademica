@@ -1,23 +1,10 @@
 import React from 'react';
-import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useNavigation, useRouter } from 'expo-router';
-import LinkButton from '@/components/ExternalLink';
-
-
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const Notes: React.FC = () => {
-  const router = useRouter();
-
   return (
     <View style={styles.container}>
-      <View style={styles.link}>
-        <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
-      </View>      
-      <View style={styles.firstContainer}>
-        <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
-        <Text style={styles.text}>Boletim</Text>
-      </View>
+      <View style={styles.firstContainer} />
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.secondContainer}>
           <View style={styles.tableRow}>
@@ -177,7 +164,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   container: {
-    flex: 1,  // Ajustei para flex 1 para ocupar toda a tela
+    flex: 1,  
     backgroundColor: '#709BEF',
     marginBottom: 30
   },
@@ -188,10 +175,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#709BEF',
   },
   secondContainer: {
-    flex: 1,  // Ajustado para flex 1 para ocupar o restante da tela, dentro do ScrollView
+    flex: 1,  
     backgroundColor: '#fff',
-    justifyContent: 'flex-start',  // Ajustado para garantir que o conteúdo comece do topo
-    alignItems: 'center',
+    justifyContent: 'flex-start', 
     paddingHorizontal: 20,
     paddingTop: 30,
   },
@@ -202,7 +188,7 @@ const styles = StyleSheet.create({
     bottom: 15,
   },
   mainText: {
-    fontSize: 28,  // Maior tamanho de fonte
+    fontSize: 28,  
     color: '#709BEF',
     fontWeight: '700',
     textAlign: 'left',
@@ -210,23 +196,23 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   tableRow: {
-    flexDirection: 'row',  // Usado para alinhar os textos e notas em linha
-    justifyContent: 'space-between',  // Espaça os itens (deixando os textos à esquerda e notas à direita)
-    width: '100%',  // Ocupa toda a largura disponível
-    marginBottom: 10,  // Espaçamento entre as linhas
-    paddingHorizontal: 20,  // Para garantir que o conteúdo não toque as bordas
+    flexDirection: 'row',  
+    justifyContent: 'space-between',  
+    width: '100%',  
+    marginBottom: 10,  
+    paddingHorizontal: 20,  
   },
   subText: {
     fontSize: 16,
     color: 'black',
-    textAlign: 'left',  // Alinha os textos à esquerda
-    width: '70%',  // Deixa o texto à esquerda ocupar 70% da linha
+    textAlign: 'left',  
+    width: '70%', 
   },
   note: {
     fontSize: 16,
     color: 'black',
-    textAlign: 'right',  // Alinha as notas à direita
-    width: '30%',  // Deixa a nota ocupar 30% da linha
+    textAlign: 'right',  
+    width: '30%',  
   },
   button: {
     width: 135,
@@ -253,7 +239,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   scrollContainer: {
-    flex: 1,  // Permite que o ScrollView ocupe o espaço restante
+    flex: 1,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     borderBottomLeftRadius: 0,
