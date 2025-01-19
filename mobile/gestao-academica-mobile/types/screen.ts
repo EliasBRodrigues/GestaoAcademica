@@ -1,0 +1,11 @@
+export const SCREEN = {
+    HOME: 'HOME',
+    LOGIN: 'LOGIN',
+    _HOME: '_home',
+    REGISTRATION: 'REGISTRATION',
+    NOTES: 'NOTES',
+    FREQUENCY: 'FREQUENCY',
+    TIME: 'TIME',
+    _GRADE_REGISTRATION: '_GRADE_REGISTRATION',
+    FORGOT: 'FORGOT',
+} as const;
