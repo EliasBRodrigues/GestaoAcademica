@@ -1,20 +1,21 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View, Modal } from 'react-native'
 import React, { useState } from 'react';
-import { useRouter } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
+import { SCREEN } from '@/types/screen';
 
 export default function _logout() {
     const [modalVisible, setModalVisible] = useState(Boolean);
-    const router = useRouter();
+    const nav = useNavigation();
 
     const handleLogin = () => {
         Alert.alert("Você saiu do sistema! Obrigado(a).")
         setModalVisible(false)
-        router.push("/(no-tabs)/login")
+        nav.navigate(SCREEN.LOGIN);
     }
 
     const handleHome = () => {
-        setModalVisible(false)
-        router.push("/(tabs)/(student)/_home")
+        setModalVisible(false);
+        nav.navigate(SCREEN._HOME);
     }
 
     return (

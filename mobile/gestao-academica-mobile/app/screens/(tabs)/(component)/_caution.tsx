@@ -5,11 +5,9 @@ import { useNavigation, useRouter } from 'expo-router';
 import LinkButton from '@/components/ExternalLink';
 
 const _caution: React.FC = () => {
-    const router = useRouter();
     return (
         <View style={styles.container}>
             <View style={styles.link}>
-                <LinkButton href="../../../(tabs)/(student)/_home" iconName="chevron-left" size={32} color="white" />
             </View>
             <View style={styles.firstContainer}>
                 <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
@@ -69,7 +67,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#709BEF',
-        marginBottom: 30
     },
     firstContainer: {
         flex: .1,
@@ -84,6 +81,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 30,
+        paddingBottom: 30,
     },
     text: {
         fontSize: 18,

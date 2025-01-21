@@ -157,16 +157,9 @@ const Notes: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  link: {
-    position: 'relative',
-    top: 10,
-    left: 10,
-    padding: 20,
-  },
   container: {
     flex: 1,  
     backgroundColor: '#709BEF',
-    marginBottom: 30
   },
   firstContainer: {
     flex: .1,
@@ -180,6 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', 
     paddingHorizontal: 20,
     paddingTop: 30,
+    paddingBottom: 30,
   },
   text: {
     fontSize: 18,
@@ -227,9 +221,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     top: 20,
-  },
-  icon: {
-    color: '#fff',
   },
   row: {
     bottom: 30,

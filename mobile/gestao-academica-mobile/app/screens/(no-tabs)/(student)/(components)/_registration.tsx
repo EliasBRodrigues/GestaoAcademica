@@ -109,12 +109,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 30,
+    paddingBottom: 0,
+    paddingTop: 20,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
   },
   mainText: {
-    fontSize: 28,
+    fontSize: 22,
     color: '#709BEF',
     fontWeight: '700',
     textAlign: 'left',
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   mainText2: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#709BEF',
     fontWeight: '700',
     textAlign: 'left',
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   subText: {
     fontSize: 16,
