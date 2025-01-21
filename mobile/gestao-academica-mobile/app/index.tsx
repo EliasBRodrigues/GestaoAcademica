@@ -1,7 +1,7 @@
-import StackNavigation from './navigation';
+import Home from './screens/(no-tabs)/home';
 
 export default function HomeScreen() {
   return (
-      <StackNavigation />
+      <Home />
   );
 }
