@@ -1,14 +1,16 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
-import { SCREEN } from '../../types/screen';
+
 import { RootStack } from '@/types/types';
-import _home from '../screens/(tabs)/(student)/_home';
-import Registration from '../screens/(no-tabs)/(student)/(components)/_registration';
-import Notes from '../screens/(no-tabs)/(student)/(components)/_notes';
-import Horary from '../screens/(no-tabs)/(student)/(components)/_time';
-import Frequency from '../screens/(no-tabs)/(student)/(components)/_frequency';
+import { SCREEN } from '@/types/screen';
 import _grade_registration from '../screens/(no-tabs)/(student)/(components)/(registration)/_grade_registration';
-import _forgot from '../screens/(tabs)/(login)/_forgot';
+import Frequency from '../screens/(no-tabs)/(student)/(components)/_frequency';
+import Notes from '../screens/(no-tabs)/(student)/(components)/_notes';
+import Registration from '../screens/(no-tabs)/(student)/(components)/_registration';
+import Horary from '../screens/(no-tabs)/(student)/(components)/_time';
+import _home from '../screens/(tabs)/(student)/_home';
+import Login from '../screens/auth/login';
+
 
 const Stack = createNativeStackNavigator<RootStack>();
 const StackNavigation = () => {
