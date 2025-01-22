@@ -65,161 +65,186 @@ export default function _grade_registration() {
             ],
             dsm2: [
                 {
-                    nome: 'Modelagem de Banco de Dados',
+                    nome: 'Banco de Dados Relacional',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Desenvolvimento Web I',
+                    nome: 'Desenvolvimento Web II',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Algoritmo e Lógica de Programação',
+                    nome: 'Técnicas de Programação I',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Engenharia de Software I',
+                    nome: 'Engenharia de Software II',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Design Digital',
+                    nome: 'Estrutura de Dados',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Sistemas Operacionais e Redes de Computaores',
+                    nome: 'Matemática para Computação',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
             ],
             dsm3: [
                 {
-                    nome: 'Modelagem de Banco de Dados',
+                    nome: 'Banco de Dados Não-Relacional',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Desenvolvimento Web I',
+                    nome: 'Desenvolvimento Web III',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Algoritmo e Lógica de Programação',
+                    nome: 'Técnicas de Programação II',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Engenharia de Software I',
+                    nome: 'Gestão Ágil de Projetos de Software',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Design Digital',
+                    nome: 'Interação Huma no Computador',
+                    quant: '40 aulas',
+                    modelo: 'Presencial'
+                },
+                {
+                    nome: 'Álgebra Linear',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Sistemas Operacionais e Redes de Computaores',
-                    quant: '80 aulas',
+                    nome: 'Inglês I',
+                    quant: '40 aulas',
                     modelo: 'Presencial'
                 },
             ],
             dsm4: [
                 {
-                    nome: 'Modelagem de Banco de Dados',
+                    nome: 'Integração e Entrega Contínua',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Desenvolvimento Web I',
+                    nome: 'Laboratório de Des. Web',
+                    quant: '60 aulas',
+                    modelo: 'Presencial'
+                },
+                {
+                    nome: 'Programação para Dispositivos Móveis I',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Algoritmo e Lógica de Programação',
+                    nome: 'Internet das Coisas e Aplicações',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Engenharia de Software I',
+                    nome: 'Experiência do Usuário',
+                    quant: '40 aulas',
+                    modelo: 'Presencial'
+                },
+                {
+                    nome: 'Estatística Aplicada',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Design Digital',
-                    quant: '80 aulas',
-                    modelo: 'Presencial'
-                },
-                {
-                    nome: 'Sistemas Operacionais e Redes de Computaores',
-                    quant: '80 aulas',
+                    nome: 'Inglês II',
+                    quant: '40 aulas',
                     modelo: 'Presencial'
                 },
             ],
             dsm5: [
                 {
-                    nome: 'Modelagem de Banco de Dados',
+                    nome: 'Segurança no Desenvolvimento de Aplicações',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Desenvolvimento Web I',
+                    nome: 'Lab. de Des. p/ Dispositivos Móvei',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Algoritmo e Lógica de Programação',
+                    nome: 'Programação para Dispositivos Móveis II',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Engenharia de Software I',
+                    nome: 'Aprendizagem de Máquina',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Design Digital',
+                    nome: 'Computação em Nuvem I',
                     quant: '80 aulas',
                     modelo: 'Presencial'
                 },
                 {
-                    nome: 'Sistemas Operacionais e Redes de Computaores',
-                    quant: '80 aulas',
-                    modelo: 'Presencial'
+                    nome: 'Fundamento da Redação Técnica',
+                    quant: '40 aulas',
+                    modelo: 'Remoto'
+                },
+                {
+                    nome: 'Inglês III',
+                    quant: '40 aulas',
+                    modelo: 'Remoto'
                 },
             ],
             dsm6: [
                 {
-                    nome: 'Modelagem de Banco de Dados',
+                    nome: 'Mineração de Dados',
                     quant: '80 aulas',
-                    modelo: 'Presencial'
+                    modelo: 'Remoto'
                 },
                 {
-                    nome: 'Desenvolvimento Web I',
+                    nome: 'Qualidade e Teste de Software',
                     quant: '80 aulas',
-                    modelo: 'Presencial'
+                    modelo: 'Remoto'
                 },
                 {
-                    nome: 'Algoritmo e Lógica de Programação',
+                    nome: 'Processamento de Linguagem Natural',
                     quant: '80 aulas',
-                    modelo: 'Presencial'
+                    modelo: 'Remoto'
                 },
                 {
-                    nome: 'Engenharia de Software I',
+                    nome: 'Computação em Nuvem II',
                     quant: '80 aulas',
-                    modelo: 'Presencial'
+                    modelo: 'Remoto'
                 },
                 {
-                    nome: 'Design Digital',
-                    quant: '80 aulas',
-                    modelo: 'Presencial'
+                    nome: 'Ética Profissional e Patente',
+                    quant: '40 aulas',
+                    modelo: 'Remoto'
                 },
                 {
-                    nome: 'Sistemas Operacionais e Redes de Computaores',
-                    quant: '80 aulas',
+                    nome: 'Inglês IV',
+                    quant: '40 aulas',
+                    modelo: 'Remoto'
+                },
+                {
+                    nome: 'Lab. de Des. Multiplataforma',
+                    quant: '60 aulas',
+                    modelo: 'Remoto'
+                },
+                {
+                    nome: 'Lab. de Des. Multiplataforma',
+                    quant: '20 aulas',
                     modelo: 'Presencial'
                 },
             ],
