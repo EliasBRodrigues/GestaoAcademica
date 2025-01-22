@@ -76,7 +76,7 @@ export default function Layout() {
           component={StackNavigation}
           options={{
             headerShown: true,
-            title: "Home",
+            title: "SIGA",
             drawerLabel: "Home",
             drawerIcon: () => (
               <Icon name="home" size={28} color="#aaa" style={styles.icon} />
