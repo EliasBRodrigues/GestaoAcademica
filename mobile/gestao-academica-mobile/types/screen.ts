@@ -1,7 +1,7 @@
 export const SCREEN = {
     HOME: 'HOME',
     LOGIN: 'LOGIN',
-    _HOME: '_home',
+    Home: 'Home',
     REGISTRATION: 'REGISTRATION',
     NOTES: 'NOTES',
     FREQUENCY: 'FREQUENCY',
