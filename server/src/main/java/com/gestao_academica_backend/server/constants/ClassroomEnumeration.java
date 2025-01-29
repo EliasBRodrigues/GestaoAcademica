@@ -6,5 +6,5 @@ public enum ClassroomEnumeration {
     DSM_3,
     DSM_4,
     DSM_5,
-    DSM_6;
+    DSM_6
 }
