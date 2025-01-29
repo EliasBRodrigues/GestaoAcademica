@@ -13,17 +13,17 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-    if (email === '' || password === '') {
-      Alert.alert("campos devem ter um valor");
-    }
-    if (email === 'u' || password === 'u') {
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        Alert.alert("Seja Bem Vindo(a)!");
-        nav.navigate(SCREEN._HOME);
-      }, 2000);
-    }
+    // if (email === '' || password === '') {
+    //   Alert.alert("campos devem ter um valor");
+    // }
+    // if (email === 'u' || password === 'u') {
+    //   setIsLoading(true);
+    //   setTimeout(() => {
+    //     setIsLoading(false);
+    //     Alert.alert("Seja Bem Vindo(a)!");
+        nav.navigate(SCREEN.Home);
+      //}, 2000);
+    //}
   };
 
 
