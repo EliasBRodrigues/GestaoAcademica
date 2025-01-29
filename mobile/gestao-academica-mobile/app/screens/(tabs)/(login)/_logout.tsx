@@ -15,7 +15,7 @@ export default function _logout() {
 
     const handleHome = () => {
         setModalVisible(false);
-        nav.navigate(SCREEN._HOME);
+        nav.navigate(SCREEN.Home);
     }
 
     return (

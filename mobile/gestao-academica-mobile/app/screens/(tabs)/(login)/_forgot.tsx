@@ -40,7 +40,7 @@ export default function _forgot() {
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Enviar</Text>
             </TouchableOpacity>
-            {/* <Link href={"/(tabs)/(student)/_home"} style={styles.forgotPassword}>Voltar</Link> */}
+            {/* <Link href={"/(tabs)/(student)/Home"} style={styles.forgotPassword}>Voltar</Link> */}
         </View>
     );
 }
