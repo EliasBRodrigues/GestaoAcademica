@@ -8,7 +8,7 @@ import { SCREEN } from '@/types/screen';
 import StackNavigation from '@/app/navigation';
 import _forgot from './screens/(tabs)/(login)/_forgot';
 import Login from './screens/auth/login';
-import _home from './screens/(tabs)/(student)/_home';
+import Home from './screens/(tabs)/(student)/Home';
 import _caution from './screens/(tabs)/(component)/_caution';
 import _logout from './screens/(tabs)/(login)/_logout';
 
@@ -72,7 +72,7 @@ export default function Layout() {
         >
         </Drawer.Screen>
         <Drawer.Screen
-          name={SCREEN._HOME}
+          name={SCREEN.Home}
           component={StackNavigation}
           options={{
             headerShown: true,
