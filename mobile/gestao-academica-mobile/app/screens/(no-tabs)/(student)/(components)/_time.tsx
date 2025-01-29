@@ -1,16 +1,25 @@
-import React from 'react';
+import api from '@/services/api';
+import { Grade } from '@/services/types/Grade';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text , View } from 'react-native';
 
-const subjects = [
-  { sigla: "IAL", disciplina: "Internet das Coisas" },
-  { sigla: "IHC", disciplina: "Interação Humano Computador" },
-  { sigla: "IHC", disciplina: "Interação Humano Computador" },
-  { sigla: "IHC", disciplina: "Interação Humano Computador" },
-  { sigla: "IHC", disciplina: "Interação Humano Computador" },
-  { sigla: "IHC", disciplina: "Interação Humano Computador" },
-];
-
 export default function Horary() {
+
+  const [grade, setGrade] = useState<Grade | null>(null);
+
+  const fetchGradeHorary = async () => {
+    try {
+      const res = await api.get<Grade>(`/api/grades/1`);
+      setGrade(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchGradeHorary();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.link} />
@@ -23,11 +32,16 @@ export default function Horary() {
                 <View style={styles.verticalLine}></View>
                 <Text style={styles.headerText}>DISCIPLINA</Text>
               </View>
-              {subjects.map((subject, index) => (
-                <View key={index} style={styles.tableRow}>
-                  <Text style={styles.cellText}>{subject.sigla}</Text>
+              {(grade ? [
+                { sigla: grade.sigla, horario: grade.nameGrade },
+                { sigla: grade.sigla, horario: grade.nameGrade },
+                { sigla: grade.sigla, horario: grade.nameGrade },
+                { sigla: grade.sigla, horario: grade.nameGrade },
+              ] : []).map((item, idx) => (
+                <View key={idx} style={styles.tableRow2}>
+                  <Text style={styles.cellText}>{item.sigla}</Text>
                   <View style={styles.verticalLine}></View>
-                  <Text style={styles.cellText}>{subject.disciplina}</Text>
+                  <Text style={styles.cellText}>{item.horario}</Text>
                 </View>
               ))}
             </View>
@@ -36,13 +50,11 @@ export default function Horary() {
                 <View key={index} style={styles.dayBox}>
                   <Text style={styles.dayText}>{dia}</Text>
                   <View style={styles.table2}>
-                    {[
-                      { sigla: "IAL", horario: "18:30-19:30" },
-                      { sigla: "IHC", horario: "14:00-15:00" },
-                      { sigla: "IHC", horario: "14:00-15:00" },
-                      { sigla: "IHC", horario: "14:00-15:00" },
-                      { sigla: "IHC", horario: "14:00-15:00" }
-                    ].map((item, idx) => (
+                    {(grade ? [
+                      { sigla: grade.sigla, horario: "18:30-19:30" },
+                      { sigla: grade.sigla, horario: "18:30-19:30" },
+                      { sigla: grade.sigla, horario: "18:30-19:30" },
+                    ] : []).map((item, idx) => (
                       <View key={idx} style={styles.tableRow2}>
                         <Text style={styles.cellText}>{item.sigla}</Text>
                         <View style={styles.verticalLine}></View>
@@ -140,6 +152,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     color: 'black',
+    fontSize: 10
   },
   verticalLine: {
     width: 1,
