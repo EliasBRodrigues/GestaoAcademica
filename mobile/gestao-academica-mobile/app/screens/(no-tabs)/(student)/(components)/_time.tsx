@@ -1,16 +1,16 @@
 import api from '@/services/api';
 import { Grade } from '@/services/types/Grade';
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text , View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function Horary() {
 
-  const [grade, setGrade] = useState<Grade | null>(null);
+  const [randomData, setRandomData] = useState<string | Grade[] | null>(null);
 
   const fetchGradeHorary = async () => {
     try {
-      const res = await api.get<Grade>(`/api/grades/1`);
-      setGrade(res.data);
+      const res = await api.get<Grade[]>(`/api/grades`);
+      setRandomData(res.data);
     } catch (error) {
       console.error(error);
     }
@@ -32,43 +32,47 @@ export default function Horary() {
                 <View style={styles.verticalLine}></View>
                 <Text style={styles.headerText}>DISCIPLINA</Text>
               </View>
-              {(grade ? [
-                { sigla: grade.sigla, horario: grade.nameGrade },
-                { sigla: grade.sigla, horario: grade.nameGrade },
-                { sigla: grade.sigla, horario: grade.nameGrade },
-                { sigla: grade.sigla, horario: grade.nameGrade },
-              ] : []).map((item, idx) => (
-                <View key={idx} style={styles.tableRow2}>
-                  <Text style={styles.cellText}>{item.sigla}</Text>
-                  <View style={styles.verticalLine}></View>
-                  <Text style={styles.cellText}>{item.horario}</Text>
-                </View>
-              ))}
+
+              {randomData && Array.isArray(randomData) ? (
+                randomData.map((item, idx) => (
+                  <>
+                    <View key={idx} style={styles.tableRow2}>
+                      <Text style={styles.cellText}>{item.sigla}</Text>
+                      <View style={styles.verticalLine}></View>
+                      <Text style={styles.cellText}>{item.nameGrade}</Text>
+                    </View>
+                  </>
+                ))
+              ) : (
+                <Text>{randomData}</Text>
+              )}
             </View>
             <View style={styles.row}>
               {["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"].map((dia, index) => (
                 <View key={index} style={styles.dayBox}>
                   <Text style={styles.dayText}>{dia}</Text>
                   <View style={styles.table2}>
-                    {(grade ? [
-                      { sigla: grade.sigla, horario: "18:30-19:30" },
-                      { sigla: grade.sigla, horario: "18:30-19:30" },
-                      { sigla: grade.sigla, horario: "18:30-19:30" },
-                    ] : []).map((item, idx) => (
-                      <View key={idx} style={styles.tableRow2}>
-                        <Text style={styles.cellText}>{item.sigla}</Text>
-                        <View style={styles.verticalLine}></View>
-                        <Text style={styles.cellText}>{item.horario}</Text>
-                      </View>
-                    ))}
+                    {randomData && Array.isArray(randomData) ? (
+                      randomData.map((item, idx) => (
+                        <>
+                          <View key={idx} style={styles.tableRow2}>
+                            <Text style={styles.cellText}>{item.sigla}</Text>
+                            <View style={styles.verticalLine}></View>
+                            <Text style={styles.cellText}>{item.horary}</Text>
+                          </View>
+                        </>
+                      ))
+                    ) : (
+                      <Text>{randomData}</Text>
+                    )}
                   </View>
                 </View>
               ))}
             </View>
           </View>
         </ScrollView>
-      </View>
-    </View>
+      </View >
+    </View >
   );
 }
 
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
     borderBottomColor: '#709BEF',
-    height: 30,
+    height: 40,
   },
   container: {
     flex: 1,
