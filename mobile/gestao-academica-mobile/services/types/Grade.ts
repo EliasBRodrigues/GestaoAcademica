@@ -4,4 +4,5 @@ export interface Grade {
     sigla: string;
     subjectHours: string;
     subjectFormatClass: string;
+    horary: string;
 }
