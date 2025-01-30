@@ -56,7 +56,6 @@ export default function Notes() {
                   <Text style={{ fontWeight: 'bold' }}>Media</Text>
                   <Text style={{ fontWeight: 'bold' }}>{item.media}</Text>
                 </View>
-
               </>
             ))
           ) : (
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'left',
     width: '100%',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   tableRow: {
     flexDirection: 'row',
