@@ -30,8 +30,10 @@ public class ClassroomController {
 
     @GetMapping("/api/classrooms/{id}")
     public ResponseEntity<?> getClassroomById(@PathVariable String id) throws Exception {
-        return ResponseEntity.ok(classroomService.findByGrade(id));
+        return ResponseEntity.ok(classroomService.findByClassroomGrade(id));
     }
+
+    
 
     // @GetMapping("/api/classroom/{classrooms}")
     // public List<Classroom> getClassroomsByName(@PathVariable("classrooms") String classrooms) {

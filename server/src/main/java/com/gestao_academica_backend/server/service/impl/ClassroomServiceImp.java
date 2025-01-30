@@ -42,7 +42,7 @@ public class ClassroomServiceImp extends AbstractEntityDao<Classroom> {
         return classroomRepository.findById(id);
     }
 
-    public List<Classroom> findByGrade(String id) throws Exception{
+    public List<Classroom> findByClassroomGrade(String id) throws Exception{
         PreparedStatement pstmt = getConnection().prepareStatement(" SELECT * FROM classroom, grade WHERE classrooms = ? ");
         pstmt.setString(1, id);
         return super.findByPreparedStatement(pstmt);
