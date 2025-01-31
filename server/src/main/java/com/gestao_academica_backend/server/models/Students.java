@@ -31,8 +31,8 @@ public class Students{
     private String academicYear;
 
     @OneToMany(mappedBy = "student",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-   // @JsonManagedReference("student_attendance")
-    @JsonBackReference("student-attendance")
+    @JsonManagedReference("student_attendance")
+    //@JsonBackReference("student-attendance")
     private List<Attendances> attendanceList;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -42,4 +42,8 @@ public class Students{
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference("student_notes")
     private List<GradeNotes> gradeNotesList;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "grade_id")
+    private Grade grade;
 }

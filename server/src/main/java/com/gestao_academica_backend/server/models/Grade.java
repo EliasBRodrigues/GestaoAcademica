@@ -1,5 +1,6 @@
 package com.gestao_academica_backend.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gestao_academica_backend.server.constants.AbbreviationEnumeration;
 import com.gestao_academica_backend.server.constants.SubjectEnumeration;
@@ -29,6 +30,11 @@ public class Grade implements Serializable{
     private String sigla;
     private String subjectHours;
     private String subjectFormatClass;
+    private String horary;
+    
+    @OneToMany(mappedBy = "grade", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference("student_grade")
+    private List<Students> student;
 
     @OneToMany(mappedBy = "grade",cascade = CascadeType.ALL)
     @JsonIgnore
