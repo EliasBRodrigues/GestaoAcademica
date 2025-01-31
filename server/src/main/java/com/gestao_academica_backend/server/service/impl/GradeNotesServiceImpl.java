@@ -28,7 +28,7 @@ public class GradeNotesServiceImpl extends AbstractEntityDao<GradeNotes>{
     }
 
     public List<GradeNotes> findByStudent(String id) throws Exception{
-        PreparedStatement pstmt = getConnection().prepareStatement(" SELECT n.*, s.* FROM notes n JOIN students s ON n.student_id = s.id WHERE s.id = ?; ");
+        PreparedStatement pstmt = getConnection().prepareStatement(" SELECT n.*, s.* FROM notes n JOIN students s ON n.student_id = s.id WHERE s.id = ? ");
         pstmt.setString(1, id);
         return super.findByPreparedStatement(pstmt);
     }

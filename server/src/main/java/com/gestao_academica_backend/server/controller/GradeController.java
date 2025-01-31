@@ -36,15 +36,21 @@ public class GradeController {
         List<Grade> grades = gradeService.getAllGrades();
         return ResponseEntity.ok(grades);
     }
+
     // @GetMapping("/api/classrooms/grade={id}")
     // public ResponseEntity<List<Classroom>> getAllClassroomsByGradeId(@PathVariable Long id) {
-    //     return ResponseEntity.ok(classroomService.findByGrade(id));
+    //     return ResponseEntity.ok(classroomService.findByGradeStudenList(id));
+    // }
+
+    // @GetMapping("/api/grades/{id}")
+    // public ResponseEntity<Grade> getGradeById(@PathVariable Long id) {
+    //     return gradeService.getGradeById(id)
+    //             .map(ResponseEntity::ok)
+    //             .orElse(ResponseEntity.notFound().build());
     // }
 
     @GetMapping("/api/grades/{id}")
-    public ResponseEntity<Grade> getGradeById(@PathVariable Long id) {
-        return gradeService.getGradeById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> getGradeByStudentId(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(gradeService.findByGradeStudenList(id));
     }
 }
