@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestao_academica_backend.server.models.Attendances;
+import com.gestao_academica_backend.server.models.Students;
+import com.gestao_academica_backend.server.models.dto.StudentsDTO;
 import com.gestao_academica_backend.server.repository.AttendanceRepository;
+import com.gestao_academica_backend.server.repository.StudentRepository;
 import com.gestao_academica_backend.server.service.AttendanceService;
 
 import java.util.List;
@@ -16,10 +19,18 @@ import java.util.Optional;
 @Slf4j
 public class AttendanceServiceImp implements AttendanceService {
     private final AttendanceRepository attendanceRepository;
+    @Autowired
+    private StudentRepository studentsRepository;
 
     @Autowired
-    public AttendanceServiceImp(AttendanceRepository attendanceRepository) {
+    public AttendanceServiceImp(AttendanceRepository attendanceRepository, StudentRepository studentsRepository) {
         this.attendanceRepository = attendanceRepository;
+        this.studentsRepository = studentsRepository;
+    }
+
+    public StudentsDTO getStudentWithAttendances(Long id) {
+        Optional<StudentsDTO> student = attendanceRepository.findByIdWithAttendances(id);
+        return student.orElseThrow(() -> new RuntimeException("Student not found"));
     }
 
     @Override

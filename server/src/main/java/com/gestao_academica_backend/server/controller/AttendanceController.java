@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.gestao_academica_backend.server.models.Attendances;
+import com.gestao_academica_backend.server.models.Students;
+import com.gestao_academica_backend.server.repository.StudentRepository;
 import com.gestao_academica_backend.server.service.AttendanceService;
 import com.gestao_academica_backend.server.service.impl.AttendanceServiceImp;
 
@@ -17,8 +19,16 @@ public class AttendanceController {
     private final AttendanceServiceImp attendanceService;
 
     @Autowired
-    public AttendanceController(AttendanceServiceImp attendanceService) {
+    private StudentRepository studentsRepository;
+
+    @Autowired
+    public AttendanceController(AttendanceServiceImp attendanceService, StudentRepository studentsRepository) {
         this.attendanceService = attendanceService;
+    }
+
+    @GetMapping("/{id}/attendances")
+    public ResponseEntity<?> getStudentWithAttendances(@PathVariable Long id) {
+        return ResponseEntity.ok(attendanceService.getStudentWithAttendances(id));
     }
 
     @GetMapping("/")
@@ -27,12 +37,12 @@ public class AttendanceController {
         return ResponseEntity.ok(attendances);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Attendances> getAttendanceById(@PathVariable Long id) {
-        return attendanceService.getAttendanceById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    // @GetMapping("/{id}")
+    // public ResponseEntity<Attendances> getAttendanceById(@PathVariable Long id) {
+    //     return attendanceService.getAttendanceById(id)
+    //             .map(ResponseEntity::ok)
+    //             .orElse(ResponseEntity.notFound().build());
+    // }
 
     @PostMapping("/")
     public ResponseEntity<Attendances> saveAttendance(@RequestBody Attendances attendance) {

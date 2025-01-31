@@ -21,12 +21,6 @@ public class Attendances{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    // @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    // @JoinColumn(name = "grade_id")
-    // @JsonBackReference
-    // private Grade subject;
-
     private String subjectEnumeration;
     private String sigla;
 
