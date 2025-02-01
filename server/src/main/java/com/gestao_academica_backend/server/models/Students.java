@@ -1,6 +1,7 @@
 package com.gestao_academica_backend.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -32,7 +33,6 @@ public class Students{
 
     @OneToMany(mappedBy = "student",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference("student_attendance")
-    //@JsonBackReference("student-attendance")
     private List<Attendances> attendanceList;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -45,5 +45,6 @@ public class Students{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "grade_id")
+    @JsonIgnore
     private Grade grade;
 }
