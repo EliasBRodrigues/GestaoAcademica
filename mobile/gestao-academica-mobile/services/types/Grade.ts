@@ -5,4 +5,8 @@ export interface Grade {
     subjectHours: string;
     subjectFormatClass: string;
     horary: string;
+    classroom: {
+        id: number,
+		classrooms: string
+    }
 }
