@@ -28,10 +28,16 @@ public class AttendanceServiceImp implements AttendanceService {
         this.studentsRepository = studentsRepository;
     }
 
-    public StudentsDTO getStudentWithAttendances(Long id) {
-        Optional<StudentsDTO> student = attendanceRepository.findByIdWithAttendances(id);
+    public Students getStudentWithAttendances(Long id) {
+        Optional<Students> student = attendanceRepository.findByIdWithAttendances(id);
         return student.orElseThrow(() -> new RuntimeException("Student not found"));
     }
+
+    public List<Attendances> getStudentWithAttendancesId(Long id) {
+        List<Attendances> student = attendanceRepository.findAttendancesByStudentId(id);
+        return student;
+    }
+
 
     @Override
     public List<Attendances> getAllAttendances() {
