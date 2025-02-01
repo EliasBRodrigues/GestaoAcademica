@@ -8,6 +8,7 @@ import { Semester } from '@/services/types/Semester';
 import { Classroom } from '@/services/types/Classroom';
 import api from '@/services/api';
 import axios from 'axios';
+import { Grade } from '@/services/types/Grade';
 
 export default function GradeRegistration() {
     const nav = useNavigation();
@@ -18,11 +19,11 @@ export default function GradeRegistration() {
 
     const [selected, setSelected] = useState<Semester | undefined>();
     const isSemesterSelected = selected !== undefined;
-    const [randomData, setRandomData] = useState<string | Classroom[] | null>(null);
+    const [randomData, setRandomData] = useState<string | Grade[] | null>(null);
 
     const fetchGradesForSemester = async (semester: string) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/classrooms/${semester}`);
+            const response = await axios.get(`http://localhost:8080/api/grade/classroom/${semester}`);
             if (response.data) {
                 setRandomData(response.data);
             }
@@ -50,21 +51,21 @@ export default function GradeRegistration() {
                     onValueChange={(item: string) => handlePickerChange(item)}
                     style={styles.picker}
                 >
-                    <Picker.Item label="1° SEMESTRE" value="DSM_1"/>
-                    <Picker.Item label="2° SEMESTRE" value="DSM_2" />
-                    <Picker.Item label="3° SEMESTRE" value="DSM_3" />
-                    <Picker.Item label="4° SEMESTRE" value="DSM_4" />
-                    <Picker.Item label="5° SEMESTRE" value="DSM_5" />
-                    <Picker.Item label="6° SEMESTRE" value="DSM_6" />
+                    <Picker.Item label="1° SEMESTRE" value="1"/>
+                    <Picker.Item label="2° SEMESTRE" value="2" />
+                    <Picker.Item label="3° SEMESTRE" value="3" />
+                    <Picker.Item label="4° SEMESTRE" value="4" />
+                    <Picker.Item label="5° SEMESTRE" value="5" />
+                    <Picker.Item label="6° SEMESTRE" value="6" />
                 </Picker>
 
                 <ScrollView style={styles.scrollContainer}>
                     {randomData && Array.isArray(randomData) ? (
                         randomData.map((item, index) => (
                             <View key={index} style={styles.card}>
-                                <Text style={styles.cardTitle}>{item.grade.nameGrade}</Text>
-                                <Text>{`Quantidade de aulas: ${item.grade.subjectHours}`}</Text>
-                                <Text>{`Modelo: ${item.grade.subjectFormatClass}`}</Text>
+                                <Text style={styles.cardTitle}>{item.nameGrade}</Text>
+                                <Text>{`Quantidade de aulas: ${item.subjectHours}`}</Text>
+                                <Text>{`Modelo: ${item.subjectFormatClass}`}</Text>
                             </View>
                         ))
                     ) : (
