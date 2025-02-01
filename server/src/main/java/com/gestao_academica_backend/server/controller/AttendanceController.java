@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/attendances")
+@CrossOrigin(origins = "http://localhost:8081/")
 public class AttendanceController {
 
     private final AttendanceServiceImp attendanceService;
@@ -31,18 +32,23 @@ public class AttendanceController {
         return ResponseEntity.ok(attendanceService.getStudentWithAttendances(id));
     }
 
+    @GetMapping("/{id}/attendance")
+    public ResponseEntity<?> getStudentWithAttendancesId(@PathVariable Long id) {
+        return ResponseEntity.ok(attendanceService.getStudentWithAttendancesId(id));
+    }
+
     @GetMapping("/")
     public ResponseEntity<List<Attendances>> getAllAttendances() {
         List<Attendances> attendances = attendanceService.getAllAttendances();
         return ResponseEntity.ok(attendances);
     }
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<Attendances> getAttendanceById(@PathVariable Long id) {
-    //     return attendanceService.getAttendanceById(id)
-    //             .map(ResponseEntity::ok)
-    //             .orElse(ResponseEntity.notFound().build());
-    // }
+    @GetMapping("/{id}")
+    public ResponseEntity<Attendances> getAttendanceById(@PathVariable Long id) {
+        return attendanceService.getAttendanceById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
     @PostMapping("/")
     public ResponseEntity<Attendances> saveAttendance(@RequestBody Attendances attendance) {
