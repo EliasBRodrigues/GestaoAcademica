@@ -59,7 +59,7 @@ public class ClassroomServiceImp extends AbstractEntityDao<Classroom> {
         grade.setSigla(rs.getString("sigla"));
         grade.setSubjectHours(rs.getString("subject_hours"));
         grade.setSubjectFormatClass(rs.getString("subject_format_class"));
-        classroom.setGrade(grade);
+        //classroom.setGrade(grade);
         return classroom;
     }
 

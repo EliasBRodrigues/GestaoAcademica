@@ -8,6 +8,6 @@ import com.gestao_academica_backend.server.models.Classroom;
 import java.util.List;
 
 public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
-    List<Classroom> findClassroomByGradeId(Long gradeId);
+    //List<Classroom> findClassroomByGradeId(Long gradeId);
     // List<Classroom> findByClassrooms(ClassroomEnumeration classrooms);
 }
