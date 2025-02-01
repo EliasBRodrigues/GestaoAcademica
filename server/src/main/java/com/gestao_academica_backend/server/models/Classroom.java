@@ -20,10 +20,9 @@ public class Classroom implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    //@Enumerated(EnumType.STRING)
     private String classrooms;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="grade_id", nullable = false)
-    private Grade grade;
+    // @ManyToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name="grade_id", nullable = false)
+    // private Grade grade;
 }

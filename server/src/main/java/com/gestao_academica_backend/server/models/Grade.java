@@ -40,7 +40,11 @@ public class Grade implements Serializable{
     @JsonIgnore
     private List<Section> sectionList;
 
-    @OneToMany(mappedBy = "grade",cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Classroom> classroomsList;
+    // @OneToMany(mappedBy = "grade",cascade = CascadeType.ALL)
+    // @JsonIgnore
+    // private List<Classroom> classroomsList;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "classroom_id", nullable = false)
+    private Classroom classroom;
 }
