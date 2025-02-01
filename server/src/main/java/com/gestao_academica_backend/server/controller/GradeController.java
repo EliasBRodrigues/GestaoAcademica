@@ -53,4 +53,9 @@ public class GradeController {
     public ResponseEntity<?> getGradeByStudentId(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok(gradeService.findByGradeStudenList(id));
     }
+
+    @GetMapping("/api/grade/classroom/{id}")
+    public ResponseEntity<?> getGradeByClassroomId(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(gradeService.getGradeByClassroomId(id));
+    }
 }

@@ -32,6 +32,12 @@ public class GradeServiceImp extends AbstractEntityDao<Grade> {
         return gradeRepository.findById(id);
     }
 
+    public List<Grade> getGradeByClassroomId(Long id){
+        List<Grade> grades = gradeRepository.findGradesByClassroomId(id);
+        return grades;
+        //return grades.orElseThrow(() -> new RuntimeException("Grade not found"));
+    }
+
     public List<Grade> findByGradeStudenList(Long id) throws Exception{
         PreparedStatement pstmt = getConnection().prepareStatement(" SELECT g.*, s.* FROM grade g JOIN students s ON g.id = s.id WHERE s.id = ? ");
         pstmt.setLong(1, id);
