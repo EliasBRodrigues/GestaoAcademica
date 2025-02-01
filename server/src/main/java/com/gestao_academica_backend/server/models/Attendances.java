@@ -27,6 +27,9 @@ public class Attendances{
     private Date attendanceDate;
     
     private String attendanceStatus;
+
+    private Integer attendancePresent;
+    private Integer attendanceAbsent;
     
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
