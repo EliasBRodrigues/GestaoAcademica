@@ -43,8 +43,16 @@ public class Students{
     @JsonManagedReference("student_notes")
     private List<GradeNotes> gradeNotesList;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "grade_id")
+    // @ManyToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "grade_id")
+    // @JsonIgnore
+    // private Grade grade;
+    @ManyToMany
+    @JoinTable(
+        name = "student_grade",
+        joinColumns = @JoinColumn(name = "student_id"), // column to refer Student join
+        inverseJoinColumns = @JoinColumn(name = "grade_id") // column to refer Grade join
+    )
     @JsonIgnore
-    private Grade grade;
+    private List<Grade> grade;
 }

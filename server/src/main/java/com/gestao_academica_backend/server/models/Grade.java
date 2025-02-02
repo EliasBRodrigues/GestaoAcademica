@@ -32,17 +32,16 @@ public class Grade implements Serializable{
     private String subjectFormatClass;
     private String horary;
     
-    @OneToMany(mappedBy = "grade", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonBackReference("student_grade")
+    // @OneToMany(mappedBy = "grade", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JsonBackReference("student_grade")
+    // private List<Students> student;
+
+    @ManyToMany(mappedBy = "grade")
     private List<Students> student;
 
     @OneToMany(mappedBy = "grade",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Section> sectionList;
-
-    // @OneToMany(mappedBy = "grade",cascade = CascadeType.ALL)
-    // @JsonIgnore
-    // private List<Classroom> classroomsList;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "classroom_id", nullable = false)
