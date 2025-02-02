@@ -9,7 +9,7 @@ export default function Notes() {
 
   const fetchNotes = async () => {
     try {
-      const res = await api.get(`http://localhost:8080/api/gradesNotes/${noteId}`);
+      const res = await api.get(`http://localhost:8080/api/grades/notes/${noteId}`);
       setRandomData(res.data);
     } catch (error) {
       console.error(error);
