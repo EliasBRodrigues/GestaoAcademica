@@ -41,7 +41,7 @@ public class Students{
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference("student_notes")
-    private List<GradeNotes> gradeNotesList;
+    private List<Notes> gradeNotesList;
 
     // @ManyToOne(fetch = FetchType.EAGER)
     // @JoinColumn(name = "grade_id")
