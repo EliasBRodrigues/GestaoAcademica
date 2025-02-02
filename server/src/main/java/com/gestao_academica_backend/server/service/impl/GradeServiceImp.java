@@ -38,11 +38,11 @@ public class GradeServiceImp extends AbstractEntityDao<Grade> {
         //return grades.orElseThrow(() -> new RuntimeException("Grade not found"));
     }
 
-    public List<Grade> findByGradeStudenList(Long id) throws Exception{
-        PreparedStatement pstmt = getConnection().prepareStatement(" SELECT g.*, s.* FROM grade g JOIN students s ON g.id = s.id WHERE s.id = ? ");
-        pstmt.setLong(1, id);
-        return super.findByPreparedStatement(pstmt);
-    }
+    // public List<Grade> findByGradeStudenList(Long id) throws Exception{
+    //     PreparedStatement pstmt = getConnection().prepareStatement(" SELECT g.*, s.* FROM grade g JOIN students s ON g.id = s.id WHERE s.id = ? ");
+    //     pstmt.setLong(1, id);
+    //     return super.findByPreparedStatement(pstmt);
+    // }
 
     @Override
     protected Grade resultSetToObject(ResultSet rs) throws Exception {
