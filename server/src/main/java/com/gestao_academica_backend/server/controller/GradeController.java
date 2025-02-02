@@ -49,10 +49,10 @@ public class GradeController {
     //             .orElse(ResponseEntity.notFound().build());
     // }
 
-    @GetMapping("/api/grades/{id}")
-    public ResponseEntity<?> getGradeByStudentId(@PathVariable Long id) throws Exception {
-        return ResponseEntity.ok(gradeService.findByGradeStudenList(id));
-    }
+    // @GetMapping("/api/grades/{id}")
+    // public ResponseEntity<?> getGradeByStudentId(@PathVariable Long id) throws Exception {
+    //     return ResponseEntity.ok(gradeService.findByGradeStudenList(id));
+    // }
 
     @GetMapping("/api/grade/classroom/{id}")
     public ResponseEntity<?> getGradeByClassroomId(@PathVariable Long id) throws Exception {
