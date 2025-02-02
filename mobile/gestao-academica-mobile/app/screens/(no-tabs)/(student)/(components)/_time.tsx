@@ -8,8 +8,9 @@ export default function Horary() {
   const [randomData, setRandomData] = useState<string | Grade[] | null>(null);
 
   const fetchGradeHorary = async () => {
+    const id = 1;
     try {
-      const res = await api.get<Grade[]>(`/api/grades`);
+      const res = await api.get<Grade[]>(`/api/grade/classroom/${id}`);
       setRandomData(res.data);
     } catch (error) {
       console.error(error);
@@ -24,15 +25,14 @@ export default function Horary() {
     <View style={styles.container}>
       <View style={styles.link} />
       <View style={styles.scrollContainer}>
-        <ScrollView contentContainerStyle={styles.scrollView}>
-          <View style={styles.secondContainer}>
+        <View style={styles.secondContainer}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
             <View style={styles.table}>
               <View style={styles.tableRow}>
                 <Text style={styles.headerText}>SIGLA</Text>
                 <View style={styles.verticalLine}></View>
                 <Text style={styles.headerText}>DISCIPLINA</Text>
               </View>
-
               {randomData && Array.isArray(randomData) ? (
                 randomData.map((item, idx) => (
                   <>
@@ -69,9 +69,11 @@ export default function Horary() {
                 </View>
               ))}
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View >
+
       </View >
+
     </View >
   );
 }
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   table2: {
-    width: '120%',
+    width: '110%',
     borderWidth: 1,
     borderColor: '#709BEF',
     borderRadius: 10,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     paddingTop: 30,
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
