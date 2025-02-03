@@ -25,8 +25,9 @@ export default function Horary() {
     <View style={styles.container}>
       <View style={styles.link} />
       <View style={styles.scrollContainer}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+
         <View style={styles.secondContainer}>
-          <ScrollView contentContainerStyle={styles.scrollView}>
             <View style={styles.table}>
               <View style={styles.tableRow}>
                 <Text style={styles.headerText}>SIGLA</Text>
@@ -69,8 +70,8 @@ export default function Horary() {
                 </View>
               ))}
             </View>
-          </ScrollView>
         </View >
+        </ScrollView>
 
       </View >
 

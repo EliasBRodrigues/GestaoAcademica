@@ -23,14 +23,14 @@ export default function Notes() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.firstContainer} />
-      <ScrollView style={styles.scrollContainer}>
+      <View style={styles.link} />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.secondContainer}>
           {randomData && Array.isArray(randomData) ? (
             randomData.map((item, idx) => (
-              <>
+              <React.Fragment key={idx}>
                 <View style={styles.tableRow}>
-                  <Text key={idx} style={styles.mainText}>{item.subject}</Text>
+                  <Text style={styles.mainText}>{item.subject}</Text>
                 </View>
                 <View style={styles.tableRow}>
                   <Text style={styles.subText}>Atividade 1</Text>
@@ -56,7 +56,7 @@ export default function Notes() {
                   <Text style={{ fontWeight: 'bold' }}>Media</Text>
                   <Text style={{ fontWeight: 'bold' }}>{item.media}</Text>
                 </View>
-              </>
+              </React.Fragment>
             ))
           ) : (
             <Text>{randomData}</Text>
@@ -68,29 +68,23 @@ export default function Notes() {
 };
 
 const styles = StyleSheet.create({
+  link: {
+    position: 'relative', top: 10, left: 10, padding: 20,
+  },
   container: {
     flex: 1,
     backgroundColor: '#709BEF',
   },
-  firstContainer: {
-    flex: .1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#709BEF',
+  scrollContainer: {
+    flexGrow: 1,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
   },
   secondContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
     paddingHorizontal: 20,
     paddingTop: 30,
     paddingBottom: 30,
-  },
-  text: {
-    fontSize: 18,
-    color: '#FFF',
-    fontWeight: '600',
-    bottom: 15,
   },
   mainText: {
     fontSize: 28,
@@ -119,33 +113,4 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     width: '30%',
   },
-  button: {
-    width: 135,
-    height: 150,
-    backgroundColor: '#709BEF',
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '700',
-    top: 20,
-  },
-  row: {
-    bottom: 30,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-    width: '80%',
-  },
-  scrollContainer: {
-    flex: 1,
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-  },
 });
-
