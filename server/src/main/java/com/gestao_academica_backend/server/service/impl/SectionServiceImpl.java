@@ -5,7 +5,7 @@ import com.gestao_academica_backend.server.models.Teachers;
 import com.gestao_academica_backend.server.repository.SectionRepository;
 import com.gestao_academica_backend.server.repository.TeacherRepository;
 import com.gestao_academica_backend.server.service.SectionService;
-import javax.persistence.EntityNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
