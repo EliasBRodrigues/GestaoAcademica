@@ -8,8 +8,6 @@ export default function Frequency() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  const subjects = ['IoT', 'PM', 'BD', 'AI', 'SE'];
-
   const [randomData, setRandomData] = useState<string | Attendance[] | null>(null);
   const id = 1;
   const fetchFrequency = async () => {
@@ -54,15 +52,6 @@ export default function Frequency() {
             <Text>{randomData}</Text>
             
           )}
-          {/* {subjects.map((subject, index) => (
-            <View key={index} style={styles.tableRow}>
-              <Text style={styles.cellText}>{subject}</Text>
-              <View style={styles.verticalLine}></View>
-              <Text style={styles.cellText}>{getRandomInt(10, 20)}</Text>
-              <View style={styles.verticalLine}></View>
-              <Text style={styles.cellText}>{getRandomInt(0, 5)}</Text>
-            </View>
-          ))} */}
         </View>
         <Text style={styles.caution}>Obs: Caso atinja um percentual acima de 25% na matéria será reprovado por falta na matéria.</Text>
       </View>
