@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gestao_academica_backend.server.constants.ClassroomEnumeration;
 import com.gestao_academica_backend.server.constants.SectionEnumeration;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,8 +1,7 @@
 package com.gestao_academica_backend.server.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
-import com.gestao_academica_backend.server.constants.ClassroomEnumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -7,7 +7,7 @@ import com.gestao_academica_backend.server.constants.SubjectEnumeration;
 import com.gestao_academica_backend.server.constants.SubjectFormatClass;
 import com.gestao_academica_backend.server.constants.SubjectHoursEnumeration;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
