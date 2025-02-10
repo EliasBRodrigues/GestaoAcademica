@@ -1,11 +1,9 @@
 package com.gestao_academica_backend.server.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,10 +41,6 @@ public class Students{
     @JsonManagedReference("student_notes")
     private List<Notes> gradeNotesList;
 
-    // @ManyToOne(fetch = FetchType.EAGER)
-    // @JoinColumn(name = "grade_id")
-    // @JsonIgnore
-    // private Grade grade;
     @ManyToMany
     @JoinTable(
         name = "student_grade",
@@ -55,4 +49,8 @@ public class Students{
     )
     @JsonIgnore
     private List<Grade> grade;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
 }
