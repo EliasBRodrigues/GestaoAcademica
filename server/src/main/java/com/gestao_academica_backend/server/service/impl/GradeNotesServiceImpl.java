@@ -53,8 +53,5 @@ public class GradeNotesServiceImpl extends AbstractEntityDao<Notes>{
         students.setEmail(rs.getString("email"));
         gradeNotes.setStudent(students);
         return gradeNotes;
-    }
-
-
-    
+    }   
 }
