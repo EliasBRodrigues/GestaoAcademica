@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestao_academica_backend.server.models.Attendances;
-import com.gestao_academica_backend.server.models.Students;
-import com.gestao_academica_backend.server.models.dto.StudentsDTO;
 import com.gestao_academica_backend.server.repository.AttendanceRepository;
 import com.gestao_academica_backend.server.repository.StudentRepository;
 import com.gestao_academica_backend.server.service.AttendanceService;
@@ -26,11 +24,6 @@ public class AttendanceServiceImp implements AttendanceService {
     public AttendanceServiceImp(AttendanceRepository attendanceRepository, StudentRepository studentsRepository) {
         this.attendanceRepository = attendanceRepository;
         this.studentsRepository = studentsRepository;
-    }
-
-    public Students getStudentWithAttendances(Long id) {
-        Optional<Students> student = attendanceRepository.findByIdWithAttendances(id);
-        return student.orElseThrow(() -> new RuntimeException("Student not found"));
     }
 
     public List<Attendances> getStudentWithAttendancesId(Long id) {
