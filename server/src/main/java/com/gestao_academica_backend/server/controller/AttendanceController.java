@@ -27,27 +27,9 @@ public class AttendanceController {
         this.attendanceService = attendanceService;
     }
 
-    @GetMapping("/{id}/attendances")
-    public ResponseEntity<?> getStudentWithAttendances(@PathVariable Long id) {
-        return ResponseEntity.ok(attendanceService.getStudentWithAttendances(id));
-    }
-
     @GetMapping("/{id}/attendance")
     public ResponseEntity<?> getStudentWithAttendancesId(@PathVariable Long id) {
         return ResponseEntity.ok(attendanceService.getStudentWithAttendancesId(id));
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<List<Attendances>> getAllAttendances() {
-        List<Attendances> attendances = attendanceService.getAllAttendances();
-        return ResponseEntity.ok(attendances);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Attendances> getAttendanceById(@PathVariable Long id) {
-        return attendanceService.getAttendanceById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/")
