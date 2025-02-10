@@ -15,12 +15,10 @@ export default function Notes() {
       console.error(error);
     }
   }
-
   useEffect(() => {
     fetchNotes();
-  }, [])
-
-
+  }, []);
+  
   return (
     <View style={styles.container}>
       <View style={styles.link} />
