@@ -8,7 +8,6 @@ import api from '@/services/api';
 export default function Registration() {
   const nav = useNavigation();
   const handleRegistration = () => {
-    // router.push("/(no-tabs)/(student)/(components)/(registration)/_grade_registration")
     nav.navigate(SCREEN._GRADE_REGISTRATION);
   };
   const [isButtonEnabled, setIsButtonEnabled] = useState(true);
