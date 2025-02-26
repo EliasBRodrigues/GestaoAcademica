@@ -2,15 +2,23 @@ import { Alert, StyleSheet, Text, TouchableOpacity, View, Modal } from 'react-na
 import React, { useState } from 'react';
 import { useNavigation, useRouter } from 'expo-router';
 import { SCREEN } from '@/types/screen';
+import { useAuth } from '@/hooks/AuthContext';
+import LoadAnimation from '@/components/LoadAnimation';
 
 export default function _logout() {
     const [modalVisible, setModalVisible] = useState(Boolean);
+      const [isLoading, setIsLoading] = useState(false);
+    // const { userLogout } = useAuth();
     const nav = useNavigation();
 
     const handleLogin = () => {
-        Alert.alert("Você saiu do sistema! Obrigado(a).")
-        setModalVisible(false)
-        nav.navigate(SCREEN.LOGIN);
+        setModalVisible(false);
+        setTimeout(() => {
+            setIsLoading(true);
+            Alert.alert("Você saiu do sistema! Obrigado(a).");
+            nav.navigate(SCREEN.LOGIN);
+        }, 2000);
+        // userLogout();
     }
 
     const handleHome = () => {
@@ -20,6 +28,8 @@ export default function _logout() {
 
     return (
         <View style={styles.container}>
+        <LoadAnimation isLoading={isLoading} />
+
             <Modal visible={modalVisible} transparent={true}>
                 <View style={styles.content}>
                     <View style={styles.card}>
@@ -52,7 +62,6 @@ export default function _logout() {
             <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
                 <Text style={styles.textStyle}>Clique aqui para sair do SIGA</Text>
             </TouchableOpacity>
-
         </View>
     );
 };
