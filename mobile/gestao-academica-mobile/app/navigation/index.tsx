@@ -10,19 +10,24 @@ import Registration from '../screens/(no-tabs)/(student)/(components)/_registrat
 import Horary from '../screens/(no-tabs)/(student)/(components)/_time';
 import Home from '../screens/(tabs)/(student)/_home';
 import GradeRegistration from '../screens/(no-tabs)/(student)/(components)/(registration)/_grade_registration';
+// import { AuthProvider } from '@/hooks/AuthContext';
+import Login from '../auth/login';
 
 
 const Stack = createNativeStackNavigator<RootStack>();
 const StackNavigation = () => {
   return (
-    <Stack.Navigator>
-        <Stack.Screen component={Home} name={SCREEN.Home} options={{headerShown: false}}/>
-        <Stack.Screen component={Registration} name={SCREEN.REGISTRATION} options={{ title: 'Matrícula', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white'}}/>
-        <Stack.Screen component={Notes} name={SCREEN.NOTES} options={{ title: 'Boletim', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white'}}/>
-        <Stack.Screen component={Horary} name={SCREEN.TIME} options={{ title: 'Horários', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white'}}/>
-        <Stack.Screen component={Frequency} name={SCREEN.FREQUENCY} options={{ title: 'Frequência', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white'}}/>
-        <Stack.Screen component={GradeRegistration} name={SCREEN._GRADE_REGISTRATION} options={{headerShown: false}}/>
-    </Stack.Navigator>
+    // <AuthProvider>
+      <Stack.Navigator>
+        {/* <Stack.Screen component={Login} name={SCREEN.LOGIN} options={{ headerShown: false }} /> */}
+        <Stack.Screen component={Home} name={SCREEN.Home} options={{ headerShown: false }} />
+        <Stack.Screen component={Registration} name={SCREEN.REGISTRATION} options={{ title: 'Matrícula', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white' }} />
+        <Stack.Screen component={Notes} name={SCREEN.NOTES} options={{ title: 'Boletim', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white' }} />
+        <Stack.Screen component={Horary} name={SCREEN.TIME} options={{ title: 'Horários', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white' }} />
+        <Stack.Screen component={Frequency} name={SCREEN.FREQUENCY} options={{ title: 'Frequência', headerStyle: { backgroundColor: '#709BEF' }, headerTintColor: 'white' }} />
+        <Stack.Screen component={GradeRegistration} name={SCREEN._GRADE_REGISTRATION} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    // </AuthProvider>
   )
 }
 
