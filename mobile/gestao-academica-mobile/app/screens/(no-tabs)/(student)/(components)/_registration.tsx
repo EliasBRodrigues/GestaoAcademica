@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation, useRouter } from 'expo-router';
 import { SCREEN } from '@/types/screen';
-import { User } from '@/services/types/User';
-import api from '@/services/api';
 
 export default function Registration() {
   const nav = useNavigation();
@@ -16,31 +14,31 @@ export default function Registration() {
     setIsButtonEnabled(randomCondition);
   };
 
-  const [user, setUser] = useState<User | null>(null);
-  const studentId = 1;
-    const fetchUser = async () => {
-        try {
-            const response = await api.get<User>(`/api/students/${studentId}`);
-            setUser(response.data);
-        } catch (error) {
-            console.error('error:', error);
-        }
-    };
+  // const [user, setUser] = useState<User | null>(null);
+  // const studentId = 1;
+  //   const fetchUser = async () => {
+  //       try {
+  //           const response = await api.get<User>(`/api/students/${studentId}`);
+  //           setUser(response.data);
+  //       } catch (error) {
+  //           console.error('error:', error);
+  //       }
+  //   };
 
-  useEffect(() => {
-    checkButtonState();
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   checkButtonState();
+  //   fetchUser();
+  // }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.firstContainer} />
       <View style={styles.secondContainer}>
         <View style={styles.tableRow}>
-          <Text style={styles.mainText}>{user?.name}</Text>
+          <Text style={styles.mainText}>Fulano Ciclano</Text>
         </View>
         <View style={styles.tableRow}>
-          <Text style={styles.mainText2}>Turma: {user?.classroom.classrooms}</Text>
+          <Text style={styles.mainText2}>Turma: DSM2</Text>
         </View>
         <View style={styles.table}>
           <View style={styles.tableRow}>

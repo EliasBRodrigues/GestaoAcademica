@@ -1,30 +1,29 @@
-import api from '@/services/api';
 import { GradeNotes } from '@/services/types/GradeNotes';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function Notes() {
-  const [randomData, setRandomData] = useState<string | GradeNotes[] | null>(null);
-  const noteId = 1;
+  // const [randomData, setRandomData] = useState<string | GradeNotes[] | null>(null);
+  // const noteId = 1;
 
-  const fetchNotes = async () => {
-    try {
-      const res = await api.get(`http://localhost:8080/api/grades/notes/${noteId}`);
-      setRandomData(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  useEffect(() => {
-    fetchNotes();
-  }, []);
-  
+  // const fetchNotes = async () => {
+  //   try {
+  //     const res = await api.get(`http://localhost:8080/api/grades/notes/${noteId}`);
+  //     setRandomData(res.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+  // useEffect(() => {
+  //   fetchNotes();
+  // }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.link} />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.secondContainer}>
-          {randomData && Array.isArray(randomData) ? (
+          {/* {randomData && Array.isArray(randomData) ? (
             randomData.map((item, idx) => (
               <React.Fragment key={idx}>
                 <View style={styles.tableRow}>
@@ -58,7 +57,67 @@ export default function Notes() {
             ))
           ) : (
             <Text>{randomData}</Text>
-          )}
+          )} */}
+          <ScrollView style={styles.scrollContainer}>
+            <View style={styles.secondContainer}>
+              <View style={styles.tableRow}>
+                <Text style={styles.mainText}>Internet das coisas</Text>
+                <Text style={styles.note}>8.5</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Atividade 1</Text>
+                <Text style={styles.note}>8.5</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Atividade 2</Text>
+                <Text style={styles.note}>9.0</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Projeto Integrador</Text>
+                <Text style={styles.note}>7.5</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Avaliação Integradora</Text>
+                <Text style={styles.note}>8.0</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Maratona de Programação</Text>
+                <Text style={styles.note}>10.0</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={{ fontWeight: 'bold' }}>Media</Text>
+                <Text style={{ fontWeight: 'bold' }}>9</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.mainText}>Internet das coisas</Text>
+                <Text style={styles.note}>8.5</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Atividade 1</Text>
+                <Text style={styles.note}>8.5</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Atividade 2</Text>
+                <Text style={styles.note}>9.0</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Projeto Integrador</Text>
+                <Text style={styles.note}>7.5</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Avaliação Integradora</Text>
+                <Text style={styles.note}>8.0</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={styles.subText}>Maratona de Programação</Text>
+                <Text style={styles.note}>10.0</Text>
+              </View>
+              <View style={styles.tableRow}>
+                <Text style={{ fontWeight: 'bold' }}>Media</Text>
+                <Text style={{ fontWeight: 'bold' }}>9</Text>
+              </View>
+            </View>
+          </ScrollView>
         </View>
       </ScrollView>
     </View>

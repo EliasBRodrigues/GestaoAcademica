@@ -1,4 +1,3 @@
-import api from '@/services/api';
 import { Attendance } from '@/services/types/Attendance';
 import React, { useEffect, useState } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -7,21 +6,21 @@ export default function Frequency() {
   const getRandomInt = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
+  const subjects = ['IoT', 'PM', 'BD', 'AI', 'SE'];
+  //const [randomData, setRandomData] = useState<string | Attendance[] | null>(null);
+  // const id = 1;
+  // const fetchFrequency = async () => {
+  //   try {
+  //     const res = await api.get<Attendance[]>(`/api/attendances/${id}/attendance`);
+  //     setRandomData(res.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
-  const [randomData, setRandomData] = useState<string | Attendance[] | null>(null);
-  const id = 1;
-  const fetchFrequency = async () => {
-    try {
-      const res = await api.get<Attendance[]>(`/api/attendances/${id}/attendance`);
-      setRandomData(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchFrequency();
-  }, []);
+  // useEffect(() => {
+  //   fetchFrequency();
+  // }, []);
 
   return (
     <View style={styles.container}>
@@ -36,7 +35,7 @@ export default function Frequency() {
             <Text style={styles.headerText}>FALTAS</Text>
           </View>
 
-          {randomData && Array.isArray(randomData) ? (
+          {/* {randomData && Array.isArray(randomData) ? (
             randomData.map((item, idx) => (
               <>
               <View key={idx} style={styles.tableRow}>
@@ -51,7 +50,16 @@ export default function Frequency() {
           ) : (
             <Text>{randomData}</Text>
             
-          )}
+          )} */}
+          {subjects.map((subject, index) => (
+            <View key={index} style={styles.tableRow}>
+              <Text style={styles.cellText}>{subject}</Text>
+              <View style={styles.verticalLine}></View>
+              <Text style={styles.cellText}>{getRandomInt(10, 20)}</Text>
+              <View style={styles.verticalLine}></View>
+              <Text style={styles.cellText}>{getRandomInt(0, 5)}</Text>
+            </View>
+          ))}
         </View>
         <Text style={styles.caution}>Obs: Caso atinja um percentual acima de 25% na matéria será reprovado por falta na matéria.</Text>
       </View>
