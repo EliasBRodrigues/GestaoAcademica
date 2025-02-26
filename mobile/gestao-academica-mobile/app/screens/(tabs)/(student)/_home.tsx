@@ -1,37 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from 'expo-router';
 import { SCREEN } from '@/types/screen';
 import ImageProfile from '@/components/ImageProfile';
-import api from '@/services/api';
-import { User } from '@/services/types/User';
 
 export default function Home() {
   const nav = useNavigation();
-  const [user, setUser] = useState<User | null>(null);
-  const studentId = 1;
-    const fetchUser = async () => {
-        try {
-            const response = await api.get<User>(`/api/students/${studentId}`);
-            setUser(response.data);
-        } catch (error) {
-            console.error('error:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchUser();
-    }, []);
-
+  // const Auth = useAuth();
+  // const user = Auth.getUser();
   return (
     <View style={styles.container}>
       <View style={styles.firstContainer}>
         <StatusBar barStyle="light-content" backgroundColor="#709BEF" />
         <ImageProfile />
-        <Text style={styles.text}>{user?.name}</Text>
-        <Text style={styles.text}>{user?.email}</Text>
-        <Text style={styles.text}>{user?.ra}</Text>
+        <Text style={styles.text}>ALUNO</Text>
+        <Text style={styles.text}>aluno@aluno.com</Text>
+        <Text style={styles.text}>RA: 1234567890</Text>
       </View>
       <View style={styles.secondContainer}>
         <View style={styles.row}>
