@@ -1,8 +1,11 @@
 import React from 'react'
+import { RouteProject } from './routes/RouteProject'
 
 const Home = () => {
   return (
-    <div className='text-3xl font-bold underline'>Home</div>
+    <div>
+      <RouteProject />
+    </div>
   )
 }
 
