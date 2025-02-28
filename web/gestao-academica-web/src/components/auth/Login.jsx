@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import siga from "../../assets/siga.svg";
 import Input from "../tools/Input";
-import ButtonLocal from "../tools/Button";
+import ButtonLogin from "../tools/ButtonLogin";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
-import { useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
-
+  const nav = useNavigate();
   const load = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      nav('/student')
     }, 2000);
   };
   return (
@@ -39,7 +40,7 @@ export const Login = () => {
             </div>
           </div>
           <div>
-            <ButtonLocal label="Login" loading={loading} onClick={load} />
+            <ButtonLogin label="Login" loading={loading} onClick={load} />
           </div>
         </form>
       </div>
