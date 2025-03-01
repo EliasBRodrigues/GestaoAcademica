@@ -9,6 +9,7 @@
   transition: 0.1s;
   width: 100%;
   text-align: center;
+  margin-top: 15px;
 }
 
 .button_ux {
@@ -16,21 +17,16 @@
   cursor: pointer;
   border: none;
   border-radius: 1rem;
-  background: #709BEF;
   color: #ffffff;
   width: 100%;
   height: 100%;
-  /* Garante que o botão ocupe 100% da largura disponível */
   max-width: 12rem;
-  /* Define um tamanho máximo para os botões */
   padding: 1.2rem 1.6rem;
-  /* Ajuste o padding para garantir uniformidade */
   box-sizing: border-box;
   transition: 0.1s;
   text-align: center;
   margin-top: 1.5rem;
   display: flex;
-  /* Flex para garantir que o conteúdo do botão seja centralizado */
   justify-content: center;
   align-items: center;
 }
@@ -101,8 +97,6 @@
   margin-top: 0.25rem;
 }
 
-/* Para telas até 800px */
-/* Para telas até 800px */
 @media (max-width: 800px) {
   .toast {
     display: block;
@@ -113,7 +107,6 @@
 
   .button_ux {
     font-size: 16px;
-    /* Ajuste para garantir que o texto não sobrecarregue */
     gap: 1rem;
     cursor: pointer;
     border: none;
@@ -128,29 +121,20 @@
     align-items: center;
     padding: 10px;
     max-width: 250px;
-    /* Limite a largura máxima para não ficar largo */
     width: 100%;
-    /* Faz com que o botão ocupe a largura disponível até o limite */
     margin-left: auto;
-    /* Centraliza o botão */
     margin-right: auto;
-    /* Centraliza o botão */
   }
 
   .button-grid {
     grid-template-columns: 1fr 1fr;
-    /* Duas colunas */
     gap: 1rem;
     max-width: 90%;
-    /* Deixa um pouco de margem nas laterais */
     margin-left: auto;
-    /* Centraliza os botões */
     margin-right: auto;
-    /* Centraliza os botões */
   }
 }
 
-/* Para telas até 400px */
 @media (max-width: 400px) {
   .toast {
     display: block;
@@ -161,7 +145,6 @@
 
   .button_ux {
     font-size: 14px;
-    /* Ajuste adicional */
     gap: 1rem;
     cursor: pointer;
     border: none;
@@ -183,14 +166,10 @@
 
   .button-grid {
     grid-template-columns: 1fr;
-    /* 1 coluna em telas muito pequenas */
     gap: 1rem;
     max-width: 90%;
-    /* Deixa um pouco de margem nas laterais */
     margin-left: auto;
-    /* Centraliza os botões */
     margin-right: auto;
-    /* Centraliza os botões */
   }
 
   @media (max-width: 380px) {
@@ -224,14 +203,10 @@
 
     .button-grid {
       grid-template-columns: 1fr;
-      /* 1 coluna em telas muito pequenas */
       gap: 1rem;
       max-width: 90%;
-      /* Deixa um pouco de margem nas laterais */
       margin-left: auto;
-      /* Centraliza os botões */
       margin-right: auto;
-      /* Centraliza os botões */
     }
   }
 }
