@@ -1,10 +1,10 @@
 import React from 'react'
-import style from './style/input-button.module.css'
+import styles from './style/input-button.module.css'
 import { Button } from 'primereact/button'
-const ButtonInterface = ({ size, label, icon, position }) => {
+const ButtonInterface = ({ style, size, label, icon, position, props }) => {
   return (
     <div>
-      <Button size={size} icon={icon} iconPos={position} label={label} className={style.button_ux} />
+      <Button style={style} size={size} icon={icon} iconPos={position} label={label} className={styles.button_ux} onClick={props}/>
     </div>
   )
 }
