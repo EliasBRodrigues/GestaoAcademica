@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import siga from "../../assets/siga.svg";
 import Input from "../tools/Input";
-import ButtonLogin from "../tools/ButtonLogin";
+import ButtonGeneral from "../tools/ButtonGeneral";
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +40,7 @@ export const Login = () => {
             </div>
           </div>
           <div>
-            <ButtonLogin label="Login" loading={loading} onClick={load} />
+            <ButtonGeneral label="Login" loading={loading} onClick={load} />
           </div>
         </form>
       </div>
