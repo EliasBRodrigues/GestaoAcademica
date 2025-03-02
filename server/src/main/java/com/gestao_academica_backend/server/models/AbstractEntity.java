@@ -1,24 +1,24 @@
-package com.gestao_academica_backend.server.models;
+// package com.gestao_academica_backend.server.models;
 
-import javax.persistence.*;
-import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+// import javax.persistence.*;
+// import lombok.Data;
+// import org.springframework.data.annotation.CreatedDate;
+// import org.springframework.data.annotation.LastModifiedDate;
+// import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+// import java.io.Serializable;
+// import java.time.LocalDateTime;
 
-@Data
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public class AbstractEntity implements Serializable {
+// @Data
+// @MappedSuperclass
+// @EntityListeners(AuditingEntityListener.class)
+// public class AbstractEntity implements Serializable {
 
-    @CreatedDate
-    @Column(name="createDate",nullable = false,updatable = false)
-    private LocalDateTime createDate;
+//     @CreatedDate
+//     @Column(name="createDate",nullable = false,updatable = false)
+//     private LocalDateTime createDate;
 
-    @LastModifiedDate
-    @Column(name="lastModifiedDate")
-    private LocalDateTime lastModifiedDate;
-}
+//     @LastModifiedDate
+//     @Column(name="lastModifiedDate")
+//     private LocalDateTime lastModifiedDate;
+// }
