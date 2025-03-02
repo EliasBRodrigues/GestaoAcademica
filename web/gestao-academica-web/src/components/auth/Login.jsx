@@ -71,7 +71,7 @@ export const Login = () => {
           </div>
           <Toast ref={toast}/>
           <div>
-            <ButtonGeneral label="Login" loading={loading} onSubmit={load} click={showInfo}/>
+            <ButtonGeneral styles={{'backgroundColor': '#709BEF'}} label="Login" loading={loading} onSubmit={load} click={showInfo}/>
           </div>
         </form>
       </div>
