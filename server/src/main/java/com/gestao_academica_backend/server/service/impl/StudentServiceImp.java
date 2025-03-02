@@ -46,5 +46,10 @@ public class StudentServiceImp implements StudentService {
     public List<Students> findAll() {
         return studentRepository.findAll();
     }
+
+    public List<Students> findStudentsByUserId(Long id) throws Exception{
+        List<Students> students = studentRepository.findStudentsByUserId(id);
+        return students;
+    }
     
 }
