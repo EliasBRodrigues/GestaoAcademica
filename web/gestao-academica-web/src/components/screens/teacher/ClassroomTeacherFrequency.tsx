@@ -9,7 +9,6 @@ const ClassromTeacherFrequency = () => {
         <div className='flex flex-col items-center justify-center'>
             <div className='bg-orange-400 w-full h-42 flex flex-col'>
                 <Menu />
-                {/* <img src={profile} className='block ml-auto mr-auto mb-5' /> */}
                 <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>Selecione a turma</h3>
                 <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>Frequência</h3>
             </div>
