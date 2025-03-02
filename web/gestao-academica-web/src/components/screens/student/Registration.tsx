@@ -5,7 +5,7 @@ import ButtonGeneral from '../../tools/ButtonGeneral'
 const Registration = () => {
     return (
         <div className='flex flex-col items-center justify-center'>
-            <div className='bg-blue-300 w-full h-42 flex flex-col'>
+            <div className='bg-[#709BEF] w-full h-42 flex flex-col'>
                 <Menu />
                 <h3 className='text-center mt-10 text-amber-50 text-4xl'>Matrícula</h3>
             </div>
