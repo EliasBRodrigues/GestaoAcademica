@@ -9,6 +9,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -34,4 +36,9 @@ public class Teachers {
             inverseJoinColumns = @JoinColumn(name="section_id")
     )
     private List<Section> sections;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", unique = true)
+    @JsonIgnore
+    private User user;
 }
