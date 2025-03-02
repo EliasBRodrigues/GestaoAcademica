@@ -51,7 +51,7 @@ public class WebSecurityConfig {
                                 "/v3/api-docs/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/update/{username}").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users/me").hasAnyAuthority(ADMIN, USER)
+                        .requestMatchers(HttpMethod.GET, "/api/users/me", "/api/user").hasAnyAuthority(ADMIN, USER)
                         .requestMatchers("/api/users", "/api/users/**").hasAuthority(ADMIN)
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults()).headers(headers -> headers.frameOptions().disable())

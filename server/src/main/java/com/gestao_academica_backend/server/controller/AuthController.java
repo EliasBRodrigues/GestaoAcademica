@@ -19,7 +19,7 @@ import com.gestao_academica_backend.server.security.TokenProvider;
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = {"http://localhost:0000"})
+@CrossOrigin(origins = {"http://localhost:8081"})
 
 @RequestMapping("/auth")
 public class AuthController {

@@ -56,7 +56,6 @@ public class TokenProvider {
                 .subject(user.getUsername())
                 .claim("rol", roles)
                 .claim("username", user.getUsername())
-                .claim("preferred_username", user.getUsername())
                 .claim("email", user.getEmail())
                 .compact();
     }
