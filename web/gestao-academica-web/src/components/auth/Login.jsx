@@ -2,10 +2,12 @@ import React, { useRef, useState } from "react";
 import siga from "../../assets/siga.svg";
 import Input from "../tools/Input";
 import ButtonGeneral from "../tools/ButtonGeneral";
+import style from "../tools/style/input-button.module.css"
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { useNavigate } from "react-router-dom";
 import { Toast } from 'primereact/toast';
+
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
@@ -30,13 +32,18 @@ export const Login = () => {
     }
 
     setTimeout(() => {
-      toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a))!', life: 2000 });
       setLoading(false);
       setTimeout(() => {
         if (username == 'aluno' && password == 'aluno') {
-          nav('/student');
+          toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), aluno(a))!', life: 2000 });
+          setTimeout(() => {
+            nav('/student');
+          }, 3000)
         } else if (username == 'prof' && password == 'prof') {
-          nav('/teacher');
+          toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), professor(a))!', life: 2000 });
+          setTimeout(() => {
+            nav('/teacher');
+          }, 3000)
         } else {
           nav('/');
           toast.current.show({severity:'error', summary: 'Error', detail:'Não encontrado', life: 3000});
@@ -69,7 +76,7 @@ export const Login = () => {
               </IconField>
             </div>
           </div>
-          <Toast ref={toast}/>
+          <Toast ref={toast} style={style.toast}/>
           <div>
             <ButtonGeneral styles={{'backgroundColor': '#709BEF'}} label="Login" loading={loading} onSubmit={load} click={showInfo}/>
           </div>
