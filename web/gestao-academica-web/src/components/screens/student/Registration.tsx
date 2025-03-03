@@ -50,7 +50,7 @@ const Registration = () => {
                         <p className="text-black text-lg w-1/4 text-right">6</p>
                     </div>
                 </div>
-                <ButtonGeneral label='Matrícula' submit={undefined} click={undefined} styles={{'backgroundColor': 'red'}} />
+                <ButtonGeneral label='Matrícula' submit={undefined} click={undefined} styles={{'backgroundColor': '#709BEF'}} />
             </div>
         </div>
     )
