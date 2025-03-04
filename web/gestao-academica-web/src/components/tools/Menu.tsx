@@ -1,22 +1,24 @@
 import React, { useRef, useState } from 'react'
-
 import { Toast } from 'primereact/toast';
 import { Sidebar } from "primereact/sidebar";
 import { Button } from 'primereact/button';
 import menu from "../../assets/menu.svg";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/context/AuthContext';
 // import { Link } from 'react-router-dom';
 
 const Menu = () => {
     const nav = useNavigate();
+    const { userLogout } = useAuth();
     const [visible, setVisible] = useState(false);
     const toast = useRef<Toast>(null);
+    
     const logout = () => {
         if(toast.current){
             toast.current?.show({ severity: 'info', summary: 'Loading...', detail: 'User Exit System' });
         }
         setTimeout(() => {
-            //userLogout()
+            userLogout();
             nav('/');
         }, 2000)
     }
