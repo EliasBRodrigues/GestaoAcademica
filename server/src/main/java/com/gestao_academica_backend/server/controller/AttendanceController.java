@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/attendances")
-@CrossOrigin(origins = "http://localhost:8081/")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class AttendanceController {
 
     private final AttendanceServiceImp attendanceService;
