@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
+    "axios": "^1.8.1",
     "gestao-academica-web": "file:",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.2",
