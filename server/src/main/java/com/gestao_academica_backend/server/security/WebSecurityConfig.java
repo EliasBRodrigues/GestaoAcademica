@@ -50,9 +50,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs",
                                 "/v3/api-docs/**")
                         .permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/update/{username}").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/users/me", "/api/user").hasAnyAuthority(ADMIN, USER)
-                        .requestMatchers("/api/users", "/api/users/**").hasAuthority(ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/api/students/**", "/api/grade/**", "/api/grades/**").hasAnyAuthority(USER)
+                        .requestMatchers("/api/**").hasAuthority(ADMIN)
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults()).headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf

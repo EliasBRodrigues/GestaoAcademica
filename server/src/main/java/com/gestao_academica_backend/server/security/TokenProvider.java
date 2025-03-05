@@ -54,8 +54,8 @@ public class TokenProvider {
                 .audience().add(TOKEN_AUDIENCE)
                 .and()
                 .subject(user.getUsername())
-                .claim("rol", roles)
-                .claim("username", user.getUsername())
+                .claim("role", roles)
+                // .claim("username", user.getUsername())
                 .claim("email", user.getEmail())
                 .compact();
     }
