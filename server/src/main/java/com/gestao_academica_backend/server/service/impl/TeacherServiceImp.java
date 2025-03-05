@@ -28,4 +28,9 @@ public class TeacherServiceImp implements TeacherService {
         Optional<Teachers> teacherOptional = teacherRepository.findById(id);
         return teacherOptional.orElse(null);
     }
+
+    public Teachers findByTeachersEmail(String email){
+        Teachers teachers = teacherRepository.findTeacherByUserEmail(email);
+        return teachers;
+    }
 }

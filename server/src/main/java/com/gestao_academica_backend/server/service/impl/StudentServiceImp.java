@@ -24,20 +24,7 @@ public class StudentServiceImp implements StudentService {
     public Students saveStudent(Students student) {
         return studentRepository.save(student);
     }
-    // @Override
-    // public Students updateStudent(Long id, Students updatedStudent) {
-    //     Optional<Students> existingStudent = studentRepository.findById(id);
-    //     if (existingStudent.isPresent()) {
-    //         Students student = existingStudent.get();
-    //         student.setName(updatedStudent.getName());
-    //         student.setEmail(updatedStudent.getEmail());
-    //         student.setAcademicYear(updatedStudent.getAcademicYear());
-    //         //student.setAcademic_grade(updatedStudent.getAcademic_grade());
-    //         student.setAttendanceList(updatedStudent.getAttendanceList());
-    //         return studentRepository.save(student);
-    //     } 
-    //     return null;
-    // }
+    
     @Override
     public Optional<Students> findById(Long id) {
         return studentRepository.findById(id);
@@ -49,6 +36,11 @@ public class StudentServiceImp implements StudentService {
 
     public List<Students> findStudentsByUserId(Long id) throws Exception{
         List<Students> students = studentRepository.findStudentsByUserId(id);
+        return students;
+    }
+
+    public Students findStudentsByUserEmail(String email) throws Exception{
+        Students students = studentRepository.findStudentsByUserEmail(email);
         return students;
     }
     
