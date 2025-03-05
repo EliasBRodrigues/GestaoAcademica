@@ -4,7 +4,8 @@ import { parseJWT } from './JWT'
 
 export const Requests = {
     authenticate,
-    getUserByEmail
+    getUserByEmail,
+    getGradesByEmail
   }
   
   function authenticate(username, password) {
@@ -13,25 +14,17 @@ export const Requests = {
     });
   }
 
-  function getUserByEmail(email) {
-    const url = email ? `/api/students/student/user/${email}` : '/api'
-    return api.get(url);
+  export async function getUserByEmail(email) {
+    const url = (`/api/students/student/user/${email}`);
+    return (await api.get(url)).data;
   }
 
-  function getGradesById(id) {
-    const url = id ? `/api/grade/classroom/${id}` : '/api'
-    return api.get(url);
+  export async function getGradesByEmail(email) {
+    const url = (`/api/grade/student/${email}`);
+    return (await api.get(url)).data;
   }
-  
-  api.interceptors.request.use(function (api) {
-    if (api.headers.Authorization) {
-      const token = api.headers.Authorization.split(' ')[1]
-      const data = parseJWT(token)
-      if (Date.now() > data.exp * 1000) {
-        window.location.href = "/login"
-      }
-    }
-    return api
-  }, function (error) {
-    return Promise.reject(error)
-  })
+
+  export async function getNotesByEmail(email) {
+    const url = (`/api/grades/student/notes/${email}`);
+    return (await api.get(url)).data;
+  }
