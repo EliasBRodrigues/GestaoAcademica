@@ -1,11 +1,6 @@
 package com.gestao_academica_backend.server.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gestao_academica_backend.server.constants.AbbreviationEnumeration;
-import com.gestao_academica_backend.server.constants.SubjectEnumeration;
-import com.gestao_academica_backend.server.constants.SubjectFormatClass;
-import com.gestao_academica_backend.server.constants.SubjectHoursEnumeration;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

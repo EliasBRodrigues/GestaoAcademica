@@ -3,7 +3,6 @@ package com.gestao_academica_backend.server.models;
 import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.gestao_academica_backend.server.constants.SubjectEnumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
