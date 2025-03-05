@@ -18,7 +18,9 @@ import java.util.List;
 public class Students{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
+    
     private String name;
     @Column(nullable = false, unique = true)
     private String email;
@@ -52,5 +54,6 @@ public class Students{
 
     @ManyToOne
     @JoinColumn(name = "user_id", unique = true)
+    @JsonIgnore
     private User user;
 }
