@@ -20,13 +20,6 @@ export const Login = () => {
   const nav = useNavigate();
   
   const showInfo = () => {
-    toast.current.show({severity:'info', summary: 'Info', detail:'Carregando', life: 4000});
-  }
-
-  const load = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
     if (!(username && password)) {
       toast.current.show({severity:'error', summary: 'Error', detail:'Campos vazios', life: 3000});
       setUsername("");
@@ -34,6 +27,12 @@ export const Login = () => {
       setLoading(false)
       return;
     }
+    toast.current.show({severity:'info', summary: 'Info', detail:'Carregando', life: 4000});
+  }
+
+  const load = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await Requests.authenticate(username, password);
