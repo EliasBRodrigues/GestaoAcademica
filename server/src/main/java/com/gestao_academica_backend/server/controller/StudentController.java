@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8081/")
+@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
@@ -35,9 +35,9 @@ public class StudentController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/student/user/{id}")
-    public ResponseEntity<?> getStudentByUserId(@PathVariable Long id) throws Exception{
-        return ResponseEntity.ok(studentService.findStudentsByUserId(id));
+    @GetMapping("/student/user/{email}")
+    public ResponseEntity<?> getStudentByUserEmail(@PathVariable String email) throws Exception{
+        return ResponseEntity.ok(studentService.findStudentsByUserEmail(email));
     }
 
     @PostMapping("/")
