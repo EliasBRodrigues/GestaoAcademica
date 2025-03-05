@@ -32,6 +32,11 @@ public class AttendanceController {
         return ResponseEntity.ok(attendanceService.getStudentWithAttendancesId(id));
     }
 
+    @GetMapping("/student/{email}")
+    public ResponseEntity<?> getAttendancesByStudentEmail(@PathVariable String email) {
+        return ResponseEntity.ok(attendanceService.getAttendancesByStudentEmail(email));
+    }
+
     @PostMapping("/")
     public ResponseEntity<Attendances> saveAttendance(@RequestBody Attendances attendance) {
         Attendances savedAttendance = attendanceService.saveAttendance(attendance);
