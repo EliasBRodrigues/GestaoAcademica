@@ -9,6 +9,6 @@ import com.gestao_academica_backend.server.models.Classroom;
 public interface ClassroomService {
     List<Classroom> getAllClassrooms();
     Optional<Classroom> getClassroomById(Long id);
-    List<Classroom> findByGrade(Long GradeId);
-    List<Classroom> findByGrade(String classrooms);
+    // List<Classroom> findByGrade(Long GradeId);
+    // List<Classroom> findByGrade(String classrooms);
 }
