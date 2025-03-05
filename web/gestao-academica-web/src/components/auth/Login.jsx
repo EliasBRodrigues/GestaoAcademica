@@ -7,12 +7,16 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { useNavigate } from "react-router-dom";
 import { Toast } from 'primereact/toast';
+import { Requests } from "../service/Requests";
+import { parseJWT } from "../service/JWT";
+import { useAuth } from "./context/AuthContext";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const toast = useRef(null);
+  const Auth = useAuth();
   const nav = useNavigate();
   
   const showInfo = () => {
@@ -31,25 +35,40 @@ export const Login = () => {
       return;
     }
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const response = await Requests.authenticate(username, password);
+      const { accessToken } = response.data;
+      const data = parseJWT(accessToken);
+      const userAuthenticate = { data, accessToken };
+      Auth.userLogin(userAuthenticate);
+      setUsername('')
+      setPassword('')
+      // setSignin(true)
       setTimeout(() => {
-        if (username == 'aluno' && password == 'aluno') {
-          toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), aluno(a))!', life: 2000 });
-          setTimeout(() => {
-            nav('/student');
-          }, 3000)
-        } else if (username == 'prof' && password == 'prof') {
-          toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), professor(a))!', life: 2000 });
-          setTimeout(() => {
-            nav('/teacher');
-          }, 3000)
-        } else {
-          nav('/');
-          toast.current.show({severity:'error', summary: 'Error', detail:'Não encontrado', life: 3000});
-        }
-      }, 900);
-    }, 4000);
+        setLoading(false);
+        setTimeout(() => {
+          if (data.role == 'USER') {
+            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), aluno(a))!', life: 2000 });
+            setTimeout(() => {
+              nav('/student');
+            }, 3000)
+          } else if (data.role == 'ADMIN') {
+            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), professor(a))!', life: 2000 });
+            setTimeout(() => {
+              nav('/teacher');
+            }, 3000)
+          } else {
+            nav('/');
+            toast.current.show({severity:'error', summary: 'Error', detail:'Não encontrado', life: 3000});
+          }
+        }, 900);
+      }, 4000);
+    } catch (error) {
+      console.error(error);
+      toast.current.show({severity:'error', summary: 'Error', detail:'Não encontrado', life: 3000});
+    }
+
+    
   };
   
   return (
