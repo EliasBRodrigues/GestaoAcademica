@@ -28,3 +28,13 @@ export const Requests = {
     const url = (`/api/grades/student/notes/${email}`);
     return (await api.get(url)).data;
   }
+
+  export async function getAttendancesByEmail(email) {
+    const url = (`/api/attendances/student/${email}`);
+    return (await api.get(url)).data;
+  }
+
+  export async function getClassroomGradesByGradeId(semester) {
+    const url = (`/api/classrooms/grade/${semester}`);
+    return (await api.get(url)).data;
+  }
