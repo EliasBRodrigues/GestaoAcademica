@@ -1,26 +1,70 @@
 package com.gestao_academica_backend.server.models.dto;
 
-import com.gestao_academica_backend.server.models.Classroom;
-import com.gestao_academica_backend.server.models.Grade;
-
 public class ClassroomGradeDTO {
-    private Classroom classroom;
-    private Grade grade;
+    private String classrooms;
+    private String nameGrade;    
+    private String sigla;
+    private String subjectHours;
+    private String subjectFormatClass;
+    private String horary;
 
-    // Getters e Setters
-    public Classroom getClassroom() {
-        return classroom;
+    public ClassroomGradeDTO(){}
+
+    public ClassroomGradeDTO(String classrooms, String nameGrade, String sigla, String subjectHours, String subjectFormatClass, String horary) {
+        this.classrooms = classrooms;
+        this.nameGrade = nameGrade;
+        this.sigla = sigla;
+        this.subjectHours = subjectHours;
+        this.subjectFormatClass = subjectFormatClass;
+        this.horary = horary;
     }
 
-    public void setClassroom(Classroom classroom) {
-        this.classroom = classroom;
+
+    public String getClassrooms() {
+        return this.classrooms;
     }
 
-    public Grade getGrade() {
-        return grade;
+    public void setClassrooms(String classrooms) {
+        this.classrooms = classrooms;
     }
 
-    public void setGrade(Grade grade) {
-        this.grade = grade;
+    public String getNameGrade() {
+        return this.nameGrade;
+    }
+
+    public void setNameGrade(String nameGrade) {
+        this.nameGrade = nameGrade;
+    }
+
+    public String getSigla() {
+        return this.sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public String getSubjectHours() {
+        return this.subjectHours;
+    }
+
+    public void setSubjectHours(String subjectHours) {
+        this.subjectHours = subjectHours;
+    }
+
+    public String getSubjectFormatClass() {
+        return this.subjectFormatClass;
+    }
+
+    public void setSubjectFormatClass(String subjectFormatClass) {
+        this.subjectFormatClass = subjectFormatClass;
+    }
+
+    public String getHorary() {
+        return this.horary;
+    }
+
+    public void setHorary(String horary) {
+        this.horary = horary;
     }
 }
