@@ -1,7 +1,7 @@
 FROM maven:3.8.6-amazoncorretto-17 as build
 WORKDIR /
 COPY . .
-RUN mvn clean package -X -DskipTests
+# RUN mvn clean package -X -DskipTests
 
 FROM openjdk:17-ea-10-jdk-slim
 WORKDIR /
