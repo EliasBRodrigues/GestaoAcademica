@@ -1,19 +1,15 @@
-# FROM maven:3.8.6-amazoncorretto-17 as build
-# WORKDIR /
-# COPY . .
-# RUN mvn clean package -X -DskipTests
+FROM maven:3.8.6-amazoncorretto-17 as build
 
-# FROM openjdk:17-ea-10-jdk-slim
-# WORKDIR /
-# COPY --from=build ./server/target/*.jar ./spring.jar
-# ENTRYPOINT java -jar spring.jar
+WORKDIR /server
 
-FROM openjdk:17-alpine
+COPY . .
 
-WORKDIR /app
+RUN mvn clean package -X -DskipTests
 
-COPY server/target/React-Spring-0.0.1-SNAPSHOT.jar app.jar
+FROM openjdk:17-ea-10-jdk-slim
 
-EXPOSE 8080
+WORKDIR /server
 
-CMD ["java", "-jar", "app.jar"]
+COPY --from=build /server/target/*.jar ./spring.jar
+
+ENTRYPOINT ["java", "-jar", "spring.jar"]
