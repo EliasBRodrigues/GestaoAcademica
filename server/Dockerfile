@@ -2,7 +2,7 @@ FROM maven:3.8.6-amazoncorretto-17 as build
 
 WORKDIR /server
 
-COPY . .
+COPY . /server
 
 RUN mvn clean package -X -DskipTests
 
