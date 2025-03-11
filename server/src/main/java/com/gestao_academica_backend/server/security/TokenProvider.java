@@ -85,6 +85,6 @@ public class TokenProvider {
     }
 
     public static final String TOKEN_TYPE = "JWT";
-    public static final String TOKEN_ISSUER = "portfolio-online-api";
-    public static final String TOKEN_AUDIENCE = "portfolio-online-app";
+    public static final String TOKEN_ISSUER = "gestao-academica-api";
+    public static final String TOKEN_AUDIENCE = "gestao-academica-app";
 }
