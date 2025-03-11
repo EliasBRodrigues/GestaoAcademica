@@ -1,15 +1,15 @@
 FROM maven:3.8.6-amazoncorretto-17 as build
 
-WORKDIR /app
+WORKDIR /server
 
-COPY . .
+COPY . /server
 
-RUN mvn clean package -DskipTests
+RUN mvn clean package -X -DskipTests
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-ea-10-jdk-slim
 
-WORKDIR /app
+WORKDIR /server
 
-COPY --from=build /app/target/*.jar /app/spring.jar
+COPY --from=build /server/target/*.jar ./spring.jar
 
-ENTRYPOINT ["java", "-jar", "/app/spring.jar"]
+ENTRYPOINT ["java", "-jar", "spring.jar"]
