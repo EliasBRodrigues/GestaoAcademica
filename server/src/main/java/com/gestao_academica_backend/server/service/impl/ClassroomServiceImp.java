@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestao_academica_backend.server.models.Classroom;
-import com.gestao_academica_backend.server.models.Grade;
 import com.gestao_academica_backend.server.models.dto.ClassroomGradeDTO;
 import com.gestao_academica_backend.server.repository.ClassroomRepository;
 import com.gestao_academica_backend.server.repository.GradeRepository;

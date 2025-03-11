@@ -5,12 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.gestao_academica_backend.server.models.Attendances;
-import com.gestao_academica_backend.server.models.Students;
 import com.gestao_academica_backend.server.repository.StudentRepository;
-import com.gestao_academica_backend.server.service.AttendanceService;
 import com.gestao_academica_backend.server.service.impl.AttendanceServiceImp;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/attendances")

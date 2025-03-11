@@ -1,8 +1,5 @@
 package com.gestao_academica_backend.server.controller;
 
-import com.gestao_academica_backend.server.models.Classroom;
-import com.gestao_academica_backend.server.models.Grade;
-import com.gestao_academica_backend.server.models.Section;
 import com.gestao_academica_backend.server.service.ClassroomService;
 import com.gestao_academica_backend.server.service.GradeService;
 import com.gestao_academica_backend.server.service.SectionService;

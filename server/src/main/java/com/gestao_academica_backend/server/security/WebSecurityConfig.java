@@ -1,6 +1,5 @@
 package com.gestao_academica_backend.server.security;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

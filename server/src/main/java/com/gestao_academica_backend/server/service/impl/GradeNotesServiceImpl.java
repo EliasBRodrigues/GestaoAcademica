@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.gestao_academica_backend.server.models.Classroom;
 import com.gestao_academica_backend.server.models.Notes;
 import com.gestao_academica_backend.server.models.Students;
 import com.gestao_academica_backend.server.models.dto.NotesDTO;
