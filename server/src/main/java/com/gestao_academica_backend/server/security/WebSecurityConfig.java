@@ -46,11 +46,10 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/public/**", "/auth/**").permitAll()
-                        .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs",
-                                "/v3/api-docs/**")
+                        .requestMatchers("/", "/error", "/csrf", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs","/v3/api-docs/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/students/**", "/api/grade/**", "/api/grades/**", "/api/attendances/**", "/api/classrooms/**").hasAnyAuthority(USER)
-                        .requestMatchers("/api/**").hasAuthority(ADMIN)
+                        .requestMatchers(HttpMethod.GET,"/api/teachers/**").hasAuthority(ADMIN)
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults()).headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf
