@@ -19,6 +19,11 @@ export const Requests = {
     return (await api.get(url)).data;
   }
 
+  export async function getTeacherByEmail(email) {
+    const url = (`/api/teachers/${email}`);
+    return (await api.get(url)).data;
+  }
+
   export async function getGradesByEmail(email) {
     const url = (`/api/grade/student/${email}`);
     return (await api.get(url)).data;
