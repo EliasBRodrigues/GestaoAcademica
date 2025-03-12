@@ -1,8 +1,6 @@
 package com.gestao_academica_backend.server.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gestao_academica_backend.server.constants.ClassroomEnumeration;
-import com.gestao_academica_backend.server.constants.SectionEnumeration;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,13 +19,12 @@ public class Section {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private ClassroomEnumeration name_section;
+    private String name_section;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="grade_id")
+    @JsonIgnore
     private Grade grade;
-
-    private SectionEnumeration status;
 
     @ManyToMany(mappedBy = "sections")
     @JsonIgnore
