@@ -1,6 +1,7 @@
 package com.gestao_academica_backend.server.service.impl;
 
 import com.gestao_academica_backend.server.models.Teachers;
+import com.gestao_academica_backend.server.models.dto.TeacherDTO;
 import com.gestao_academica_backend.server.repository.TeacherRepository;
 import com.gestao_academica_backend.server.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class TeacherServiceImp implements TeacherService {
         return teacherOptional.orElse(null);
     }
 
-    public Teachers findByTeachersEmail(String email){
-        Teachers teachers = teacherRepository.findTeacherByUserEmail(email);
+    public TeacherDTO findByTeachersEmail(String email){
+        TeacherDTO teachers = teacherRepository.findTeacherByUserEmail(email);
         return teachers;
     }
 }
