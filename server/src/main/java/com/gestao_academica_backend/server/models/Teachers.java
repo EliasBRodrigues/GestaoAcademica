@@ -23,7 +23,6 @@ public class Teachers {
 
     @Column(unique=true)
     private String email;
-    private String password;
     private String name;
     
     @Temporal(TemporalType.DATE)
