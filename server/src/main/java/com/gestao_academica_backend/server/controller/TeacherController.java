@@ -43,4 +43,9 @@ public class TeacherController {
     public ResponseEntity<?> getSubjectsByStudent(@PathVariable String grades) throws Exception {
         return ResponseEntity.ok(studentService.findSubjectsByStudent(grades));
     }
+
+    @GetMapping("/api/teachers/students/notes/{grades}")
+    public ResponseEntity<?> getNotesByStudent(@PathVariable String grades) throws Exception {
+        return ResponseEntity.ok(studentService.findNotesByStudent(grades));
+    }
 }
