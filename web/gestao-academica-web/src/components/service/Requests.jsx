@@ -53,3 +53,8 @@ export const Requests = {
     const url = (`/api/teachers/students/${grades}`);
     return (await api.get(url)).data;
   }
+
+  export async function getNotesByStudent(grades) {
+    const url = (`/api/teachers/students/notes/${grades}`);
+    return (await api.get(url)).data;
+  }
