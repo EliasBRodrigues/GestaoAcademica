@@ -14,4 +14,8 @@ public interface StudentRepository extends JpaRepository<Students,Long> {
 
     @Query("SELECT s FROM Students s WHERE s.email = :email")
     Students findStudentsByUserEmail(@Param("email") String email);
+
+    @Query(value = "SELECT s.id, s.name FROM Students s JOIN Classroom c on s.classroom_id = c.id JOIN Grade g ON c.id = g.id WHERE g.sigla LIKE %:grades%", nativeQuery = true)
+    List<Object[]> 
+    findSubjectsByStudents(@Param("grades") String grades);
 }
