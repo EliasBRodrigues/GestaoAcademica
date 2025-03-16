@@ -43,3 +43,13 @@ export const Requests = {
     const url = (`/api/classrooms/grade/${semester}`);
     return (await api.get(url)).data;
   }
+
+  export async function getClassroomTeachers(email) {
+    const url = (`/api/teachers/subjects/${email}`);
+    return (await api.get(url)).data;
+  }
+
+  export async function getSubjectsByStudent(grades) {
+    const url = (`/api/teachers/students/${grades}`);
+    return (await api.get(url)).data;
+  }
