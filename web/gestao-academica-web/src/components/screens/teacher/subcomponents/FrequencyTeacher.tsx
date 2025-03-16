@@ -5,7 +5,7 @@ import { Column } from 'primereact/column';
 import ButtonGeneral from '../../../tools/ButtonGeneral';
 import { Toast } from 'primereact/toast';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { StudentGrade } from '../../../interface/StudentGrade';
+import { StudentAttendance } from '../../../interface/StudentAttendance';
 import useTeacherData from '../../../../hook/TeacherData';
 import { useAuth } from '../../../auth/context/AuthContext';
 import { getSubjectsByStudent } from '../../../service/Requests';
@@ -22,8 +22,8 @@ const FrequencyTeacher = () => {
   const user = Auth.getUser();
   const { teacher, loading } = useTeacherData(user.data.email);
 
-  const [student, setstudent] = useState<StudentGrade[]>([]);
-  const [selectedstudent, setSelectedstudent] = useState<StudentGrade[] | null>(null);
+  const [student, setstudent] = useState<StudentAttendance[]>([]);
+  const [selectedstudent, setSelectedstudent] = useState<StudentAttendance[] | null>(null);
   const [rowClick, setRowClick] = useState<boolean>(true);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const FrequencyTeacher = () => {
         <div className='bg-orange-400 w-full h-auto flex flex-col p-4'>
           <Menu />
           <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>Frequência</h3>
-          <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>{nameGrade}</h3>
+          <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>{nameGrade} - {sigla}</h3>
         </div>
         <div className='pt-1 grid grid-cols-2 gap-7 justify-center w-full max-w-lg'>
           <h2 className='flex-1 text-center font-bold text-black text-xs sm:text-base mt-5'>Presenças</h2>
@@ -91,7 +91,7 @@ const FrequencyTeacher = () => {
             <Column selectionMode="multiple" headerStyle={{ width: '10rem' }} header="Selecionar todos os alunos"></Column>
           </DataTable>
         </div>
-        <ButtonGeneral styles={{ 'backgroundColor': 'orange' }} label='Matrícula' submit={undefined} click={load} />
+        <ButtonGeneral styles={{ 'backgroundColor': 'orange' }} label='Salvar' submit={undefined} click={load} />
         <div className='mb-20'></div>
       </div>
     </div>
