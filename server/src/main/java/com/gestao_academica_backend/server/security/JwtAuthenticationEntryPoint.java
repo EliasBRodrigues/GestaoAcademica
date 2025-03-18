@@ -1,6 +1,5 @@
 package com.gestao_academica_backend.server.security;
 
-
 import java.io.IOException;
 
 import org.springframework.security.core.AuthenticationException;
