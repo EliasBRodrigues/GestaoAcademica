@@ -8,18 +8,17 @@ import useTeacherData from '../../../hook/TeacherData';
 import { getClassroomTeachers } from '../../service/Requests';
 import Loader from '../../tools/Loader';
 import style from '../../tools/style/input-button.module.css';
+import Authenticate from '../../../hook/Authenticate';
 
 const ClassroomTeacherNotes = () => {
     const nav = useNavigate();
-    const Auth = useAuth();
-    const user = Auth.getUser();
-    const { teacher, loading } = useTeacherData(user.data.email);
+    const { emailGeral } = Authenticate();
+    const { teacher, loading } = useTeacherData(emailGeral);
     const [teachers, setTeachers] = useState<Teachers[]>([]);
-    const emailTeacher = user.data.email;
 
     const fetchData = async () => {
         try {
-            const response = await getClassroomTeachers(emailTeacher);
+            const response = await getClassroomTeachers(emailGeral);
             setTeachers(response);
         } catch (error) {
             console.error(error);
@@ -28,7 +27,7 @@ const ClassroomTeacherNotes = () => {
 
     useEffect(() => {
         fetchData();
-    }, [emailTeacher]);
+    }, [emailGeral]);
 
     if (loading) {
         return (

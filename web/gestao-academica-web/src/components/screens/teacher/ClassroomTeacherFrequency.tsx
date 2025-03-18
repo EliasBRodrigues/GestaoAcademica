@@ -7,20 +7,18 @@ import Loader from '../../tools/Loader';
 import { useAuth } from '../../auth/context/AuthContext';
 import { Teachers } from '../../interface/Teachers';
 import { getClassroomTeachers } from '../../service/Requests';
+import Authenticate from '../../../hook/Authenticate';
 
 const ClassromTeacherFrequency = () => {
     const nav = useNavigate();
+    const { emailGeral } = Authenticate();
     const [loading, setLoading] = useState<boolean>(true);
-
-    const Auth = useAuth();
-    const user = Auth.getUser();
     const [teacher, setTeacher] = useState<Teachers[]>([]);
-    const emailTeacher = user.data.email;
 
     const fetchData = async () => {
         try {
-            if (emailTeacher) {
-                const response = await getClassroomTeachers(emailTeacher);
+            if (emailGeral) {
+                const response = await getClassroomTeachers(emailGeral);
                 const teacherData = response.map((item: any) => ({
                     email: item[0],
                     name: item[1],
@@ -41,7 +39,7 @@ const ClassromTeacherFrequency = () => {
 
     useEffect(() => {
         fetchData();
-    }, [emailTeacher]);
+    }, [emailGeral]);
 
     if (loading) {
         return (

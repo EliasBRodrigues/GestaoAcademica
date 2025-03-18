@@ -7,21 +7,18 @@ import { Students } from '../../interface/Students'
 import { getUserByEmail } from '../../service/Requests'
 import Loader from '../../tools/Loader'
 import style from '../../tools/style/input-button.module.css';
+import Authenticate from '../../../hook/Authenticate'
 
 const Registration = () => {
     const nav = useNavigate();
+    const { emailGeral } = Authenticate();
     const [loading, setLoading] = useState<boolean>(true);
-
-    const Auth = useAuth();
-    const user = Auth.getUser();
-
     const [students, setStudent] = useState<Students | null>(null);
-    const emailStudent = user.data.email;
-
+    
     const fetchData = async () => {
         try {
-            if (emailStudent) {
-                const response = await getUserByEmail(emailStudent);
+            if (emailGeral) {
+                const response = await getUserByEmail(emailGeral);
                 setStudent(response);
             }
         } catch (error) {
@@ -35,7 +32,7 @@ const Registration = () => {
 
     useEffect(() => {
         fetchData();
-    }, [emailStudent]);
+    }, [emailGeral]);
 
     if (loading) {
         return (

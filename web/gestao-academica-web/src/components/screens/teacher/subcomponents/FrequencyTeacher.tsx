@@ -11,6 +11,7 @@ import { useAuth } from '../../../auth/context/AuthContext';
 import { getSubjectsByStudent } from '../../../service/Requests';
 import style from '../../../tools/style/input-button.module.css'
 import Loader from '../../../tools/Loader';
+import Authenticate from '../../../../hook/Authenticate';
 
 const FrequencyTeacher = () => {
   const nav = useNavigate();
@@ -18,9 +19,8 @@ const FrequencyTeacher = () => {
   const { sigla, nameGrade } = state || {};  
   const toast = useRef<Toast>(null);
 
-  const Auth = useAuth();
-  const user = Auth.getUser();
-  const { teacher, loading } = useTeacherData(user.data.email);
+  const { emailGeral } = Authenticate();
+  const { teacher, loading } = useTeacherData(emailGeral);
 
   const [student, setstudent] = useState<StudentAttendance[]>([]);
   const [selectedstudent, setSelectedstudent] = useState<StudentAttendance[] | null>(null);

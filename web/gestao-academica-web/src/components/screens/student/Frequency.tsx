@@ -5,19 +5,17 @@ import { useAuth } from '../../auth/context/AuthContext';
 import { getAttendancesByEmail } from '../../service/Requests';
 import style from '../../tools/style/input-button.module.css';
 import Loader from '../../tools/Loader';
+import Authenticate from '../../../hook/Authenticate';
 
 const Frequency = () => {
-
-  const Auth = useAuth();
-  const user = Auth.getUser();
-  const email = user.data.email;
+  const { emailGeral } = Authenticate();
   const [loading, setLoading] = useState<boolean>(true);
-  
   const [attendances, setAttendances] = useState<string | Attendance | null>(null);
+  
   const fetchData = async () => {
     try {
-      if (email) {
-        const response = getAttendancesByEmail(email);
+      if (emailGeral) {
+        const response = getAttendancesByEmail(emailGeral);
         setAttendances(await response);
       }
     } catch (error) {
@@ -31,7 +29,7 @@ const Frequency = () => {
 
   useEffect(() => {
     fetchData();
-  }, [email]);
+  }, [emailGeral]);
 
   if (loading) {
     return (

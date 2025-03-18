@@ -13,14 +13,14 @@ import { useAuth } from '../../../auth/context/AuthContext';
 import { getNotesByStudent } from '../../../service/Requests';
 import Loader from '../../../tools/Loader';
 import style from '../../../tools/style/input-button.module.css'
+import Authenticate from '../../../../hook/Authenticate';
 
 const NotesTeacher = () => {
   const { state } = useLocation();
   const { sigla, nameGrade } = state || {};
 
-  const Auth = useAuth();
-  const user = Auth.getUser();
-  const { teacher, loading } = useTeacherData(user.data.email);
+  const { emailGeral } = Authenticate();
+  const { teacher, loading } = useTeacherData(emailGeral);
 
   let emptyStudent = {
     id: '',
