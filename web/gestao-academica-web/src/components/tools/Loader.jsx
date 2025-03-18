@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./style/input-button.module.css";
 const Loader = ({ isLoading }) => {
   return (
     <>

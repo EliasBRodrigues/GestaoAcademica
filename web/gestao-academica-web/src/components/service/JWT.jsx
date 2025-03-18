@@ -1,5 +1,5 @@
 export function parseJWT(token){
-    if (!token || token.split('.').length !== 3) { // Verificando se o token tem o formato correto
+    if (!token || token.split('.').length !== 3) {
         console.error('Token inválido ou malformado');
         return null;
     }

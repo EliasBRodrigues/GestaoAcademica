@@ -1,6 +1,4 @@
-import axios from 'axios'
 import api from './constant/api'
-import { parseJWT } from './JWT'
 
 export const Requests = {
     authenticate,

@@ -2,10 +2,9 @@ import React, { useRef, useState } from 'react'
 import { Toast } from 'primereact/toast';
 import { Sidebar } from "primereact/sidebar";
 import { Button } from 'primereact/button';
-import menu from "../../assets/menu.svg";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/context/AuthContext';
-// import { Link } from 'react-router-dom';
+import menu from "../../assets/menu.svg";
 
 const Menu = () => {
     const nav = useNavigate();
@@ -26,7 +25,6 @@ const Menu = () => {
         <div>
             <Toast ref={toast} position='top-center' />
             <Sidebar visible={visible} onHide={() => setVisible(false)}>
-                {/* <img src="../../assets/siga.svg" alt="siga" /> */}
                 <Button onClick={logout}>Sair</Button>
             </Sidebar>
             <Button onClick={() => setVisible(true)}>
