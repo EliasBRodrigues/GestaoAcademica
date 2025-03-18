@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Menu from '../../../tools/Menu'
+import ButtonGeneral from '../../../tools/ButtonGeneral';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import ButtonGeneral from '../../../tools/ButtonGeneral';
 import { Toast } from 'primereact/toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { StudentAttendance } from '../../../interface/StudentAttendance';
-import useTeacherData from '../../../../hook/TeacherData';
-import { useAuth } from '../../../auth/context/AuthContext';
 import { getSubjectsByStudent } from '../../../service/Requests';
+import useTeacherData from '../../../../hook/TeacherData';
 import style from '../../../tools/style/input-button.module.css'
 import Loader from '../../../tools/Loader';
 import Authenticate from '../../../../hook/Authenticate';
@@ -18,6 +17,8 @@ const FrequencyTeacher = () => {
   const { state } = useLocation();
   const { sigla, nameGrade } = state || {};  
   const toast = useRef<Toast>(null);
+  const date = new Date();
+  const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
 
   const { emailGeral } = Authenticate();
   const { teacher, loading } = useTeacherData(emailGeral);
@@ -74,7 +75,7 @@ const FrequencyTeacher = () => {
         </div>
         <div className='pt-1 grid grid-cols-2 gap-7 justify-center w-full max-w-lg'>
           <h2 className='flex-1 text-center font-bold text-black text-xs sm:text-base mt-5'>Presenças</h2>
-          <h2 className='flex-1 text-center font-bold text-black text-xs sm:text-base mt-5'>Data: 03/02/2025</h2>
+          <h2 className='flex-1 text-center font-bold text-black text-xs sm:text-base mt-5'>Data: {formattedDate}</h2>
         </div>
         <div className="mb-8"></div>
         <Toast ref={toast} />
