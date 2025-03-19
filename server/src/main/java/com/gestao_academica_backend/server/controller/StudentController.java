@@ -1,7 +1,6 @@
 package com.gestao_academica_backend.server.controller;
 
 import com.gestao_academica_backend.server.models.Students;
-import com.gestao_academica_backend.server.service.StudentService;
 import com.gestao_academica_backend.server.service.impl.StudentServiceImp;
 
 import org.springframework.beans.factory.annotation.Autowired;

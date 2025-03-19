@@ -1,8 +1,5 @@
 package com.gestao_academica_backend.server.security;
 
-
-
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

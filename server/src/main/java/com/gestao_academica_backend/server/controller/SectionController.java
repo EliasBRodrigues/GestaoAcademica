@@ -3,7 +3,6 @@ package com.gestao_academica_backend.server.controller;
 import com.gestao_academica_backend.server.models.Section;
 import com.gestao_academica_backend.server.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

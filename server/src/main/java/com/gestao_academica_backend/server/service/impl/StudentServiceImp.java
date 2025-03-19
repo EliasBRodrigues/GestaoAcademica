@@ -43,5 +43,15 @@ public class StudentServiceImp implements StudentService {
         Students students = studentRepository.findStudentsByUserEmail(email);
         return students;
     }
+
+    public List<Object[]> findSubjectsByStudent(String grades) throws Exception{
+        List<Object[]> students = studentRepository.findSubjectsByStudents(grades);
+        return students;
+    }
+
+    public List<Object[]> findNotesByStudent(String grades) throws Exception{
+        List<Object[]> students = studentRepository.findNotesByStudents(grades);
+        return students;
+    }
     
 }
