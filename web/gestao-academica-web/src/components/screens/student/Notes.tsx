@@ -5,18 +5,17 @@ import { Note } from '../../interface/Notes';
 import { getNotesByEmail } from '../../service/Requests';
 import style from '../../tools/style/input-button.module.css';
 import Loader from '../../tools/Loader';
+import Authenticate from '../../../hook/Authenticate';
 
 const Notes = () => {
-  const Auth = useAuth();
-  const user = Auth.getUser();
-  const email = user.data.email;
+  const { emailGeral } = Authenticate();
   const [loading, setLoading] = useState<boolean>(true);
 
   const [noteStudent, setNotesStudent] = useState<string | Note | null>(null);
   const fetchData = async () => {
     try {
       if (!noteStudent) {
-        const response = getNotesByEmail(email);
+        const response = getNotesByEmail(emailGeral);
         setNotesStudent(await response);
       }
     } catch (error) {
@@ -30,7 +29,7 @@ const Notes = () => {
 
   useEffect(() => {
     fetchData();
-  }, [email]);
+  }, [emailGeral]);
 
   if (loading) {
     return (

@@ -1,6 +1,4 @@
-import axios from 'axios'
 import api from './constant/api'
-import { parseJWT } from './JWT'
 
 export const Requests = {
     authenticate,
@@ -16,6 +14,11 @@ export const Requests = {
 
   export async function getUserByEmail(email) {
     const url = (`/api/students/student/user/${email}`);
+    return (await api.get(url)).data;
+  }
+
+  export async function getTeacherByEmail(email) {
+    const url = (`/api/teachers/${email}`);
     return (await api.get(url)).data;
   }
 
@@ -36,5 +39,20 @@ export const Requests = {
 
   export async function getClassroomGradesByGradeId(semester) {
     const url = (`/api/classrooms/grade/${semester}`);
+    return (await api.get(url)).data;
+  }
+
+  export async function getClassroomTeachers(email) {
+    const url = (`/api/teachers/subjects/${email}`);
+    return (await api.get(url)).data;
+  }
+
+  export async function getSubjectsByStudent(grades) {
+    const url = (`/api/teachers/students/${grades}`);
+    return (await api.get(url)).data;
+  }
+
+  export async function getNotesByStudent(grades) {
+    const url = (`/api/teachers/students/notes/${grades}`);
     return (await api.get(url)).data;
   }

@@ -1,42 +1,62 @@
-import React, {  useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Menu from '../../../tools/Menu'
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import { Toast } from 'primereact/toast';
-import ButtonGeneral from '../../../tools/ButtonGeneral';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { classNames } from 'primereact/utils';
-
-interface Student {
-  id?: string;
-  name?: string;
-}
+import { StudentGrade } from '../../../interface/StudentGrade';
+import { useLocation } from 'react-router-dom';
+import useTeacherData from '../../../../hook/TeacherData';
+import { useAuth } from '../../../auth/context/AuthContext';
+import { getNotesByStudent } from '../../../service/Requests';
+import Loader from '../../../tools/Loader';
+import style from '../../../tools/style/input-button.module.css'
+import Authenticate from '../../../../hook/Authenticate';
 
 const NotesTeacher = () => {
-  let emptyStudent: Student = {
-    id: undefined,
+  const { state } = useLocation();
+  const { sigla, nameGrade } = state || {};
+
+  const { emailGeral } = Authenticate();
+  const { teacher, loading } = useTeacherData(emailGeral);
+
+  let emptyStudent = {
+    id: '',
     name: '',
+    atividade_um: '',
+    atividade_dois: '',
+    projeto_integrador: '',
+    avaliacao_integradora: '',
+    maratona_programacao: '',
+    qte: '',
+    media: '',
   };
 
-  const studentList = [
-    {id: '0', name: 'elias'},
-    {id: '1', name: 'elias'},
-  ]
-
-  const [students, setStudents] = useState<Student[]>([]);
-  const [studentDialog, setStudentDialog] = useState<boolean>(false);
-  const [student, setStudent] = useState<Student>(emptyStudent);
-  const [selectedStudents, setSelectedStudents] = useState<Student[]>([]);
-  const [submitted, setSubmitted] = useState<boolean>(false);
-  const [globalFilter, setGlobalFilter] = useState<string>('');
+  const [students, setStudents] = useState<StudentGrade[]>([]);
+  const [studentDialog, setStudentDialog] = useState(false);
+  const [student, setStudent] = useState(emptyStudent);
+  const [submitted, setSubmitted] = useState(false);
   const toast = useRef<Toast>(null);
-  const dt = useRef<DataTable<Student[]>>(null);
 
   useEffect(() => {
-    setStudents(studentList);
-  }, []);
+    if (teacher && teacher.length > 0) {
+      fetchData();
+    }
+  }, [teacher]);
+
+  const fetchData = async () => {
+    try {
+      const response = await getNotesByStudent(sigla);
+      const formattedResponse = response.map((([id, name, sigla, atividade_um, atividade_dois, projeto_integrador, avaliacao_integradora, media]) => ({
+        id, name, sigla, atividade_um, atividade_dois, projeto_integrador, avaliacao_integradora, media
+      })))
+      setStudents(formattedResponse);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const hideDialog = () => {
     setSubmitted(false);
@@ -45,17 +65,15 @@ const NotesTeacher = () => {
 
   const saveStudent = () => {
     setSubmitted(true);
-
     if (student.name?.trim()) {
       let _students = [...students];
       let _student = { ...student };
 
       if (student.id) {
-        const index = findIndexById(student.id);
-
+        const index = _students.findIndex(s => s.id === student.id);
         _students[index] = _student;
-        toast.current?.show({ severity: 'success', summary: 'Successful', detail: 'Student Updated', life: 3000 });
-      } 
+        toast.current?.show({ severity: 'success', summary: 'Sucesso', detail: 'Estudante atualizado', life: 3000 });
+      }
 
       setStudents(_students);
       setStudentDialog(false);
@@ -63,35 +81,12 @@ const NotesTeacher = () => {
     }
   };
 
-  const editStudent = (student: Student) => {
+  const editStudent = (student) => {
     setStudent({ ...student });
     setStudentDialog(true);
   };
 
-  const findIndexById = (id: string) => {
-    let index = -1;
-
-    for (let i = 0; i < students.length; i++) {
-      if (students[i].id === id) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  };
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
-    const val = (e.target && e.target.value) || '';
-    let _student = { ...student };
-
-    // @ts-ignore
-    _student[name] = val;
-
-    setStudent(_student);
-  };
-
-  const actionBodyTemplate = (rowData: Student) => {
+  const actionBodyTemplate = (rowData) => {
     return (
       <React.Fragment>
         <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => editStudent(rowData)} />
@@ -99,104 +94,84 @@ const NotesTeacher = () => {
     );
   };
 
-  const header = (
-    <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
-      <h4 className="m-0">Elias</h4>
-    </div>
-  );
-
   const studentDialogFooter = (
     <React.Fragment>
-      <Button label="Cancel" icon="pi pi-times" outlined onClick={hideDialog} />
-      <Button label="Save" icon="pi pi-check" onClick={saveStudent} />
+      <Button label="Cancelar" icon="pi pi-times" outlined onClick={hideDialog} />
+      <Button label="Salvar" icon="pi pi-check" onClick={saveStudent} />
     </React.Fragment>
   );
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader isLoading={loading} />
+      </div>
+    )
+  }
 
   return (
-    <div className='flex flex-col items-center justify-center w-full'>
-      <div className='bg-orange-400 w-full h-auto flex flex-col p-4'>
-        <Menu />
-        <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>DSM 1</h3>
-        <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>Sistemas Operacionais e Redes de Computadores</h3>
-      </div>
-      <div className="mb-8"></div>
-      <Toast ref={toast} />
-      <div className="card w-full overflow-x-auto px-4 sm:px-8 md:px-80">
-        <div>
-          <Toast ref={toast} />
-          <div className="card">
-
-            <DataTable ref={dt} value={students} selection={selectedStudents}
-              
-              dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
+    <div className={style.fade_in}>
+      <div className='flex flex-col items-center justify-center w-full'>
+        <div className='bg-orange-400 w-full h-auto flex flex-col p-4'>
+          <Menu />
+          <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>Notas Gerais</h3>
+          <h3 className='text-center mt-0.5 text-amber-50 text-2xl'>{nameGrade} - {sigla}</h3>
+        </div>
+        <div className="card w-full overflow-x-auto px-4 sm:px-8 md:px-80">
+          <div>
+            <Toast ref={toast} />
+            <DataTable
+              value={students}
+              paginator rows={10}
+              rowsPerPageOptions={[5, 10, 25]}
               paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} students" globalFilter={globalFilter} header="Notas Gerais"
-              selectionMode="multiple"
+              currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} estudantes"
+              header="Notas Gerais"
+              selectionMode="single"
             >
-              <Column field="name" header="Name" sortable style={{ minWidth: '16rem' }}></Column>
-              <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }}></Column>
+              <Column field="name" header="Nome" sortable style={{ minWidth: '16rem' }} />
+              <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '12rem' }} />
             </DataTable>
           </div>
 
-          <Dialog visible={studentDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} header={header} modal className="p-fluid" footer={studentDialogFooter} onHide={hideDialog}>
+          <Dialog visible={studentDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} header="Editar Notas" modal className="p-fluid" footer={studentDialogFooter} onHide={hideDialog}>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                Atividade 1
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="atividade_um" className="font-bold">{student.name}</label>
             </div>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                Atividade 2
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="atividade_um" className="font-bold">Atividade 1</label>
+              <InputText id="atividade_um" value={student.atividade_um} onChange={(e) => setStudent({ ...student, atividade_um: e.target.value })} />
             </div>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                Projeto Integrador
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="atividade_dois" className="font-bold">Atividade 2</label>
+              <InputText id="atividade_dois" value={student.atividade_dois} onChange={(e) => setStudent({ ...student, atividade_dois: e.target.value })} />
             </div>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                Avaliação Integradora
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="projeto_integrador" className="font-bold">Projeto Integrador</label>
+              <InputText id="projeto_integrador" value={student.projeto_integrador} onChange={(e) => setStudent({ ...student, projeto_integrador: e.target.value })} />
             </div>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                Maratona de Programação
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="avaliacao_integradora" className="font-bold">Avaliação Integradora</label>
+              <InputText id="avaliacao_integradora" value={student.avaliacao_integradora} onChange={(e) => setStudent({ ...student, avaliacao_integradora: e.target.value })} />
             </div>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                QTE
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="maratona_programacao" className="font-bold">Maratona de Programação</label>
+              <InputText id="maratona_programacao" value='0' />
             </div>
             <div className="field mb-5">
-              <label htmlFor="name" className="font-bold">
-                Média
-              </label>
-              <InputText id="name" value={student.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !student.name })} />
-              {submitted && !student.name && <small className="p-error">Name is required.</small>}
+              <label htmlFor="qte" className="font-bold">QTE</label>
+              <InputText id="qte" value='0' />
+            </div>
+            <div className="field mb-5">
+              <label htmlFor="media" className="font-bold">Média</label>
+              <InputText id="media" value={student.media} onChange={(e) => setStudent({ ...student, media: e.target.value })} />
             </div>
           </Dialog>
         </div>
       </div>
-      <ButtonGeneral styles={{ 'backgroundColor': 'orange' }} label='Matrícula' submit={undefined} click={undefined} />
-      <div className='mb-20'></div>
     </div>
 
-  )
-}
+  );
+};
 
 export default NotesTeacher

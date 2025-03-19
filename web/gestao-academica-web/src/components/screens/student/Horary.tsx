@@ -5,18 +5,16 @@ import { getGradesByEmail } from '../../service/Requests';
 import { useAuth } from '../../auth/context/AuthContext';
 import Loader from '../../tools/Loader';
 import style from '../../tools/style/input-button.module.css';
+import Authenticate from '../../../hook/Authenticate';
 
 const Horary = () => {
-    const Auth = useAuth();
-    const user = Auth.getUser();
-    const email = user.data.email;
+    const { emailGeral } = Authenticate();
     const [loading, setLoading] = useState<boolean>(true);
-
     const [schedules, setSchedules] = useState<string | Grades | null>(null);
     const fetchGradeHorary = async () => {
         try {
             if (!schedules) {
-                const res = await getGradesByEmail(email);
+                const res = await getGradesByEmail(emailGeral);
                 setSchedules(res);
             }
         } catch (error) {
@@ -30,7 +28,7 @@ const Horary = () => {
 
     useEffect(() => {
         fetchGradeHorary();
-    }, [email]);
+    }, [emailGeral]);
 
     if (loading) {
         return (

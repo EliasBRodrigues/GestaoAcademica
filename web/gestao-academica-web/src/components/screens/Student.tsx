@@ -8,20 +8,18 @@ import Menu from '../tools/Menu';
 import Loader from '../tools/Loader';
 import style from '../tools/style/input-button.module.css';
 import profile from '../../assets/profile.svg';
+import Authenticate from '../../hook/Authenticate';
 
 const Student = () => {
     const nav = useNavigate();
     const [loading, setLoading] = useState<boolean>(true);
-
-    const Auth = useAuth();
-    const user = Auth.getUser();
     const [students, setStudent] = useState<Students | null>(null);
-    const emailStudent = user.data.email;
+    const { emailGeral } = Authenticate();
 
     const fetchData = async () => {
         try {
-            if (emailStudent) {
-                const response = await getUserByEmail(emailStudent);
+            if (emailGeral) {
+                const response = await getUserByEmail(emailGeral);
                 setStudent(response);
             }
         } catch (error) {
@@ -35,7 +33,7 @@ const Student = () => {
 
     useEffect(() => {
         fetchData();
-    }, [emailStudent]);
+    }, [emailGeral]);
 
     if (loading) {
         return (

@@ -5,7 +5,9 @@ import { AuthProvider } from './auth/context/AuthContext'
 const Home = () => {
   return (
     <div>
+      <AuthProvider>
         <RouteProject />
+      </AuthProvider>
     </div>
   )
 }
