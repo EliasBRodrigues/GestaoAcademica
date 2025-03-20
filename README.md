@@ -18,8 +18,23 @@ O sistema permite que professores e alunos acessem e gerenciem informações rel
 - Username: james / charles
 - Password: user / user
 ```
-![Captura_de_tela_2025-03-19_232852-removebg-preview](https://github.com/user-attachments/assets/ca0effee-d6c9-456b-ac0f-4f4a62367b14)
-![Captura_de_tela_2025-03-19_233541-removebg-preview](https://github.com/user-attachments/assets/ef4b918c-0638-43f4-bea5-0cf65d67df73)
-![Captura_de_tela_2025-03-19_233252-removebg-preview](https://github.com/user-attachments/assets/124b523c-c09f-4c0a-bb97-9d5af3452e1f)
-![Captura_de_tela_2025-03-19_233416-removebg-preview](https://github.com/user-attachments/assets/643d9405-d6c3-48b9-8155-14693a803b4f)
+🔄 Funcionalidades do Sistema:
+### 1. Módulo Aluno
+- O aluno pode visualizar seu histórico acadêmico, incluindo as matérias em que está matriculado, suas notas, e as faltas.
+- O aluno tem acesso ao seu horário de aulas, podendo visualizar todas as disciplinas, horários e salas correspondentes.
+- Visualização de informações de contato de professores e coordenadores, para facilitar a comunicação direta.
+### 2. Módulo Professor
+- O professor pode visualizar a lista de alunos matriculados nas suas matérias, além de lançar as notas e frequência dos mesmos.
+- O lançamento de notas pode ser feito por meio de um formulário simples, facilitando o processo de atualização do sistema.
+
+🚀 Como Rodar o Projeto
+### 1. Clonar o Repositório:
+- Clone o repositório com o seguinte comando:
+  ```
+  git clone https://github.com/EliasBRodrigues/GestaoAcademica.git
+  ```
+### 2. Configurar o Banco de Dados:
+- Certifique-se de que o MySQL está instalado em sua máquina e funcionando na porta 3306.
+- Crie um banco de dados chamado gestao_academica (ou use o nome desejado e altere a configuração no arquivo de propriedades).
+- Utilize o script presente na pasta **/resources** para criar as tabelas necessárias no banco de dados.
 
