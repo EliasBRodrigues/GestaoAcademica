@@ -18,7 +18,6 @@ O sistema permite que professores e alunos acessem e gerenciem informações rel
 - Username: james / charles
 - Password: user / user
 ```
-
 ![Captura_de_tela_2025-03-19_232852-removebg-preview](https://github.com/user-attachments/assets/ca0effee-d6c9-456b-ac0f-4f4a62367b14)
 ![Captura_de_tela_2025-03-19_233541-removebg-preview](https://github.com/user-attachments/assets/ef4b918c-0638-43f4-bea5-0cf65d67df73)
 ![Captura_de_tela_2025-03-19_233252-removebg-preview](https://github.com/user-attachments/assets/124b523c-c09f-4c0a-bb97-9d5af3452e1f)
