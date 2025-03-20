@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import siga from "../../assets/siga.svg";
 import Input from "../tools/Input";
 import ButtonGeneral from "../tools/ButtonGeneral";
-import style from "../tools/style/input-button.module.css"
 import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { useNavigate } from "react-router-dom";
@@ -21,53 +20,54 @@ export const Login = () => {
   
   const showInfo = () => {
     if (!(username && password)) {
-      toast.current.show({severity:'error', summary: 'Error', detail:'Campos vazios', life: 3000});
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'Campos vazios', life: 3000 });
       setUsername("");
       setPassword("");
-      setLoading(false)
+      setLoading(false);
       return;
     }
-    toast.current.show({severity:'info', summary: 'Info', detail:'Carregando', life: 4000});
-  }
-
+    toast.current.show({ severity: 'info', summary: 'Info', detail: 'Carregando', life: 9000 });
+  };
+  
   const load = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     try {
       const response = await Requests.authenticate(username, password);
       const { accessToken } = response.data;
       const data = parseJWT(accessToken);
       const userAuthenticate = { data, accessToken };
       Auth.userLogin(userAuthenticate);
-      setUsername('')
-      setPassword('')
-      // setSignin(true)
+      setUsername('');
+      setPassword('');
+  
+      const navigateToRolePage = () => {
+        const roleMessages = {
+          'USER': { message: 'Seja Bem Vindo(a), aluno(a)!', path: '/student' },
+          'ADMIN': { message: 'Seja Bem Vindo(a), professor(a)!', path: '/teacher' },
+        };
+  
+        const role = roleMessages[data.role];
+        if (role) {
+          toast.current.show({ severity: 'success', summary: 'Success', detail: role.message, life: 4000 });
+          setTimeout(() => nav(role.path), 3000);
+        } else {
+          nav('/');
+          toast.current.show({ severity: 'error', summary: 'Error', detail: 'Não encontrado', life: 3000 });
+        }
+      };
+  
       setTimeout(() => {
         setLoading(false);
-        setTimeout(() => {
-          if (data.role == 'USER') {
-            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), aluno(a))!', life: 2000 });
-            setTimeout(() => {
-              nav('/student');
-            }, 3000)
-          } else if (data.role == 'ADMIN') {
-            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Seja Bem Vindo(a), professor(a))!', life: 2000 });
-            setTimeout(() => {
-              nav('/teacher');
-            }, 3000)
-          } else {
-            nav('/');
-            toast.current.show({severity:'error', summary: 'Error', detail:'Não encontrado', life: 3000});
-          }
-        }, 900);
-      }, 4000);
+        navigateToRolePage();
+      }, 1000);
+  
     } catch (error) {
       console.error(error);
-      toast.current.show({severity:'error', summary: 'Error', detail:'Não encontrado', life: 3000});
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'Não foi possível carregar as informações!', life: 3000 });
+      setLoading(false);
     }
-
-    
   };
   
   return (
@@ -94,7 +94,7 @@ export const Login = () => {
               </IconField>
             </div>
           </div>
-          <Toast ref={toast} style={style.toast}/>
+          <Toast ref={toast} position="top-center"/>
           <div>
             <ButtonGeneral styles={{'backgroundColor': '#709BEF'}} label="Login" loading={loading} onSubmit={load} click={showInfo}/>
           </div>
