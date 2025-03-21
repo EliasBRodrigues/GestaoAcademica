@@ -4,7 +4,8 @@
  bash
  Copiar
  ```
- cd frontend
+ cd web
+ cd gestao-academica-web
  npm install
  
  ```
