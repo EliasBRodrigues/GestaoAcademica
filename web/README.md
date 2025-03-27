@@ -1,8 +1,6 @@
 # Configuração do Frontend (React):
  - Navegue até a pasta do frontend e instale as dependências:
  
- bash
- Copiar
  ```
  cd web
  cd gestao-academica-web
